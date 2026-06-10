@@ -13,10 +13,10 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://docs.example.invalid',
-  baseUrl: '/',
+  url: 'https://poiroux.github.io',
+  baseUrl: '/sttar-docs/',
 
-  organizationName: 'setics',
+  organizationName: 'poiroux',
   projectName: 'sttar-docs',
 
   onBrokenLinks: 'throw',
