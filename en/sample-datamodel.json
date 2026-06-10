@@ -1,0 +1,11 @@
+{
+  "object": "Support",
+  "version": "2.4",
+  "fields": [
+    { "name": "Id", "type": "Guid", "required": true, "description": "Unique support identifier." },
+    { "name": "Position", "type": "Point", "required": true, "description": "Geographic position (project SRS)." },
+    { "name": "Type", "type": "SupportType", "required": true, "description": "Pole, chamber, building, etc." },
+    { "name": "Capacity", "type": "int", "required": false, "description": "Max connectable demands." },
+    { "name": "ParentId", "type": "Guid?", "required": false, "description": "Upstream support in the tree." }
+  ]
+}

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksttar_docs=self.webpackChunksttar_docs||[]).push([["8156"],{6205(s){s.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"batch-engine"}')}}]);
