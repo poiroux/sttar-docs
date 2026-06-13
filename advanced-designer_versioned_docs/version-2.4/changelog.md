@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 8
 title: What changed
 ---
 
@@ -7,6 +7,11 @@ title: What changed
 
 This page is **per-version**: switch releases with the navbar version picker
 and this page shows the changes for the selected release.
+
+## STTAR 2.5 — unreleased (Advanced Designer)
+
+- _Work in progress._ This is the **Next** version; content here is not yet
+  released.
 
 ## STTAR 2.4 (Advanced Designer)
 
