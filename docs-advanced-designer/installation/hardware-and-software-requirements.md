@@ -21,12 +21,20 @@ connected to the server. Clients and server communicate over IP on **TCP ports
 
 ## Software
 
-- **Microsoft .NET Framework 4.6.2 or higher.** If needed, install it from the
-  `dotnetfx46.exe` file in the installation package, or let the setup assistant
+- **Microsoft .NET Framework 4.8 or higher.** If needed, install it from the
+  `dotnetfx48.exe` file in the installation package, or let the setup assistant
   download and install it.
+- **Microsoft Visual C++ 2022 redistributable.** Included in the installation
+  package and installed by the setup assistant if it is missing.
 - **WIBU CodeMeter.** Install from `CodeMeterRuntime.exe` version 7.10a or
   higher (32-bit and 64-bit Windows) included in the installation package, or
   let the setup assistant download and install it.
+
+:::note License Manager utility
+The optional **License Manager** tool (launched from **Help ▸ License Manager**)
+is a separate executable that requires the **Microsoft .NET Desktop Runtime
+8.0**. The main application does not depend on it.
+:::
 
 :::info
 CodeMeter is the license server that controls the rights to use Setics Sttar

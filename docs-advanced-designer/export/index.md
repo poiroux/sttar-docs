@@ -39,3 +39,15 @@ GIS-section exports are GIS layers, available in several formats via the
 | Microstation DGN | `.dgn` |
 
 In the rest of this chapter, **`.xxx`** denotes one of these extensions.
+
+## Integrations and region kits
+
+Installed plugins add their own exports to the **Plugins** section of the export
+window:
+
+- **Vetro FiberMap integration** *(since 2.5)* — pushes the network design to the
+  **Vetro FiberMap** platform through its REST API instead of writing a local
+  file.
+- **Region kits** — country-specific export formats. The **Germany** region kit
+  produces the **BFP-GIS-NB** GIS deliverable; version **5.0.1** (GeoJSON) is
+  available since 2.5 alongside the earlier v4.0 (Shapefile).

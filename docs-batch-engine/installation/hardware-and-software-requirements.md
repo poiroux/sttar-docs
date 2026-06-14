@@ -21,9 +21,11 @@ connected to the server. Clients and server communicate over IP on **TCP ports
 
 ## Software
 
-- **Microsoft .NET Framework 4.6.2 or higher.** If needed, install it from the
-  `dotnetfx46.exe` file in the installation package, or let the setup assistant
+- **Microsoft .NET Framework 4.8 or higher.** If needed, install it from the
+  `dotnetfx48.exe` file in the installation package, or let the setup assistant
   download and install it.
+- **Microsoft Visual C++ 2022 redistributable.** Included in the installation
+  package and installed by the setup assistant if it is missing.
 - **WIBU CodeMeter.** Install from `CodeMeterRuntime.exe` version 7.10a or
   higher (32-bit and 64-bit Windows) included in the installation package, or
   let the setup assistant download and install it.

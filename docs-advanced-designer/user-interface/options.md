@@ -42,6 +42,7 @@ Windows environment language, not the language set for Setics Sttar.
 | **Default nodes support resolution** | Coordinate accuracy. Two points closer than the resolution model the same point and their additive characteristics (e.g. terminations) are summed. `0` disables this. |
 | **Default endpoints support resolution** | As above, for endpoints. |
 | **Maximum number of connections per feature** | Maximum number of connecting points to neighboring points not already connected by a given infrastructure section layer. |
+| **Service area buffer** | Buffer size (m) applied when computing service-area polygons. *(Configurable since 2.5; previously a fixed default.)* |
 | **Use Advanced Symbol Editor** | Enables a more complete GIS symbol editor in the Map tabs. Note: some advanced-editor options are not saved with the project and are lost on reopen. |
 | **Default basemap** | Default basemap in the Map tabs (also available in the map Legend). |
 | **Data Import and Export** | Minimizes the field sizes of `.shp` export layers (per the values present) so output files are more compact. |

@@ -51,6 +51,7 @@ four menus: **File**, **Project**, **Tools** and **Help**.
 |---|---|
 | **Options** | Opens the application-options window (see the **Options** section). |
 | **License Selector** | Selects the license server and the active Setics Sttar license (see the **License Selector** section). |
+| **License Manager** | Opens the standalone License Manager utility to manage CodeMeter license containers (since 2.5; requires the .NET Desktop Runtime 8.0). |
 | **Plugins** | Access to the extended functionalities provided by the plugins loaded at startup (see the **Plugins** section). |
 
 ## Help menu
