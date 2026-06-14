@@ -81,11 +81,21 @@ const config: Config = {
       },
     ],
     [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'cloud',
+        path: 'docs-cloud',
+        routeBasePath: 'cloud',
+        sidebarPath: './sidebarsCloud.ts',
+        // Placeholder manual — not versioned yet (no released Cloud manual).
+      },
+    ],
+    [
       '@easyops-cn/docusaurus-search-local',
       {
         hashed: true,
         indexBlog: false,
-        docsRouteBasePath: ['advanced-designer', 'planner', 'batch-engine'],
+        docsRouteBasePath: ['advanced-designer', 'planner', 'batch-engine', 'cloud'],
         // No default docs instance exists (all use custom ids); point the
         // search bar's preferred-version lookup at a real instance.
         docsPluginIdForPreferredVersion: 'advanced-designer',
@@ -127,6 +137,13 @@ const config: Config = {
           label: 'Batch Engine',
         },
         {
+          type: 'doc',
+          docId: 'intro',
+          docsPluginId: 'cloud',
+          position: 'left',
+          label: 'Cloud',
+        },
+        {
           to: '/downloads',
           label: 'Downloads',
           position: 'left',
@@ -152,6 +169,7 @@ const config: Config = {
             {label: 'Advanced Designer', to: '/advanced-designer/intro'},
             {label: 'Planner', to: '/planner/intro'},
             {label: 'Batch Engine', to: '/batch-engine/intro'},
+            {label: 'Cloud', to: '/cloud/intro'},
           ],
         },
       ],

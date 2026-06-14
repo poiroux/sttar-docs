@@ -8,6 +8,11 @@
 .docusaurus
 .cache-loader
 
+# Planner current docs are single-sourced/generated from docs-advanced-designer
+# by scripts/sync-shared-manuals.mjs (see docs-planner-overrides/README.md).
+# The frozen version snapshots in planner_versioned_docs/ stay committed.
+/docs-planner
+
 # Browser MCP scratch
 .playwright-mcp/
 
