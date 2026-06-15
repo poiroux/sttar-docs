@@ -161,6 +161,72 @@ function renderGroups(groups) {
     .join('\n');
 }
 
+// --- full release-notes page -----------------------------------------------
+
+// Strip internal tracking residue (ADO work items #NNNN, PR numbers) from a
+// slice of *HTML body* text. Unlike stripRefs() this keeps newlines so the
+// emitted HTML stays readable, and it is applied ONLY to the <main> body —
+// never to <head>/<style>/<script>, where "#000" hex colours and "PRxx"
+// substrings of base64 data would otherwise be corrupted.
+function stripHtmlRefs(s) {
+  return s
+    .replace(/\s*\(([^)]*)\)/g, (m, inner) => {
+      const residue = inner
+        .replace(/#\d+/g, '')
+        .replace(/PR\s*\d+/gi, '')
+        .replace(/\b\d{3,5}\b/g, '')
+        .replace(/[,/;&\s]+/g, '');
+      return residue === '' ? '' : m;
+    })
+    .replace(/#\d{2,5}\b/g, '')
+    .replace(/\bPR\s*\d+/gi, '')
+    .replace(/\s*\(\s*[,;\s]*\)/g, '')
+    .replace(/[ \t]{2,}/g, ' ')
+    .replace(/ +([.;,])/g, '$1');
+}
+
+// Emit a customer-facing copy of the whole release-notes document, reusing the
+// authored HTML verbatim (hero, version/build/compare picker, styling, script)
+// and sanitising only the <main> body: the trailing "Internal notes" section
+// and every per-entry <details class="tech"> block are removed, then inline
+// #NNNN / PR NNN references are stripped. Served as a static page so the
+// existing interactive picker keeps working untouched.
+async function genReleaseNotesPage(raw) {
+  const open = raw.indexOf('<main>');
+  const close = raw.indexOf('</main>');
+  if (open === -1 || close === -1) {
+    console.warn('[gen-changelog] no <main> in source — release-notes.html skipped');
+    return;
+  }
+  const head = raw.slice(0, open + '<main>'.length);
+  let tail = raw.slice(close); // </main> … <footer> … <script> … </html>
+  let body = raw.slice(open + '<main>'.length, close);
+
+  // Remove the footer "Show internal notes" trigger (Setics-only). The script's
+  // toggle is already null-guarded, but the visible link must not ship.
+  tail = tail.replace(
+    /(?:&nbsp;·&nbsp;\s*)?<a\b[^>]*id="toggle-internal"[^>]*>[\s\S]*?<\/a>/i,
+    '',
+  );
+
+  // Drop the internal-notes section (it is the last card before </main>).
+  body = body.replace(/<section class="card internal-notes"[\s\S]*$/i, '');
+  // Drop per-entry technical-detail blocks (internal engineering notes).
+  body = body.replace(/<details\b[\s\S]*?<\/details>/gi, '');
+  // Strip remaining inline work-item / PR references.
+  body = stripHtmlRefs(body);
+
+  // A small link back to the docs (relative — baseUrl-agnostic).
+  const backLink =
+    '\n  <p style="max-width:960px;margin:0 auto 8px;padding:0 24px;">' +
+    '<a href="./">← Back to documentation</a></p>\n';
+
+  const out = head + backLink + body + tail;
+  const file = path.join(root, 'static', 'release-notes.html');
+  await writeFile(file, out, 'utf8');
+  console.log('[gen-changelog] release-notes.html written (static, sanitised).');
+}
+
 // --- main ------------------------------------------------------------------
 
 async function main() {
@@ -171,6 +237,10 @@ async function main() {
     );
   }
   let html = await readFile(SOURCE, 'utf8');
+  const rawHtml = html;
+
+  // Full product-wide release-notes page (reuses the authored HTML, sanitised).
+  await genReleaseNotesPage(rawHtml);
 
   // Confidentiality guard: drop the trailing "Internal notes" section.
   const cut = html.search(/<h2>\s*Internal notes\s*<\/h2>/i);
@@ -216,7 +286,7 @@ async function main() {
       let frontmatter = DEFAULT_FRONTMATTER;
       if (existsSync(file)) {
         const cur = await readFile(file, 'utf8');
-        const fm = cur.match(/^---\n[\s\S]*?\n---/);
+        const fm = cur.match(/^---\r?\n[\s\S]*?\r?\n---/);
         if (fm) frontmatter = fm[0];
       }
       await writeFile(file, `${frontmatter}\n\n${body.trimEnd()}\n`, 'utf8');
