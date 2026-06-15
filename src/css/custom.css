@@ -1,30 +1,137 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Global styles. The classic template bundles Infima.
+ *
+ * Charte « SaaS Setics » mappée sur les variables Infima (--ifm-*).
+ * Source de vérité : STEM/apps/web/src/app/theme.css
+ *   accent  --sn-primary  #00afbf (teal)
+ *   neutres light : texte #27303f · muted #74788d · border #edf1f5 ·
+ *                   border-strong #c8cee0 · bg-main #f5f7fa · surface #fff
+ *   neutres dark  : texte #e5e7eb · muted #9ca3af · border #374151 ·
+ *                   border-strong #4b5563 · bg-main #111827 · surface #1f2937
+ *   typo : Fira Sans (UI) / Fira Mono (code)
+ * On ne colle PAS de classes sn-* : on reskinne Infima via ses tokens, donc
+ * navbar/sidebar/contenu/liens/code/footer suivent automatiquement.
  */
 
-/* You can override the default Infima variables here. */
+/* Polices de la charte (Fira Sans n'est pas chargée par défaut). */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Fira+Mono:wght@400;500;700&display=swap');
+
+/* ============================================================================
+   CLAIR — :root
+   ========================================================================== */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* Accent teal #00afbf + 6 nuances (générateur Infima, multiplicateurs de
+     luminosité HSL 0.9/0.85/0.7/1.1/1.15/1.3). */
+  --ifm-color-primary: #00afbf;
+  --ifm-color-primary-dark: #009eac;
+  --ifm-color-primary-darker: #0095a2;
+  --ifm-color-primary-darkest: #007a86;
+  --ifm-color-primary-light: #00c1d2;
+  --ifm-color-primary-lighter: #00c9dc;
+  --ifm-color-primary-lightest: #00e3f8;
+
+  /* Typographie de la charte. */
+  --ifm-font-family-base: 'Fira Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ifm-font-family-monospace: 'Fira Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+  --ifm-font-weight-semibold: 600;
+  --ifm-code-font-size: 92%;
+
+  /* Texte / liens / neutres. */
+  --ifm-font-color-base: #27303f;
+  --ifm-heading-color: #27303f;
+  --ifm-color-content-secondary: #74788d;
+  --ifm-link-color: var(--ifm-color-primary);
+  --ifm-link-hover-color: var(--ifm-color-primary-dark);
+
+  /* Fonds / surfaces. Contenu sur surface blanche, app sur gris très clair. */
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #ffffff;
+  --ifm-navbar-background-color: #ffffff;
+  --ifm-footer-background-color: #27303f;
+
+  /* Échelle d'emphase → pilote bordures, hovers, fonds discrets. */
+  --ifm-color-emphasis-0: #ffffff;
+  --ifm-color-emphasis-100: #f5f7fa;
+  --ifm-color-emphasis-200: #edf1f5;
+  --ifm-color-emphasis-300: #c8cee0;
+
+  --ifm-toc-border-color: #edf1f5;
+  --ifm-table-border-color: #edf1f5;
+  --ifm-table-head-background: #f8f9fb;
+  --ifm-table-stripe-background: #f8f9fb;
+  --ifm-hr-background-color: #edf1f5;
+  --ifm-blockquote-border-left-color: var(--ifm-color-primary);
+
+  /* Code. */
+  --ifm-code-background: #f5f7fa;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 175, 191, 0.10);
+
+  /* Rayons & ombres de la charte. */
+  --ifm-global-radius: 8px;
+  --ifm-button-border-radius: 6px;
+  --ifm-global-shadow-lw: 0 1px 4px rgba(126, 142, 177, 0.10);
+  --ifm-global-shadow-md: 0 2px 8px rgba(126, 142, 177, 0.12);
+  --ifm-global-shadow-tl: 0 24px 64px rgba(39, 48, 63, 0.28);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* ============================================================================
+   SOMBRE — [data-theme='dark']  (dark-mode pleinement fonctionnel)
+   Accent teal légèrement éclairci pour le contraste sur fond sombre.
+   ========================================================================== */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #1cd2e3;
+  --ifm-color-primary-dark: #19bdcc;
+  --ifm-color-primary-darker: #18b3c1;
+  --ifm-color-primary-darkest: #14939f;
+  --ifm-color-primary-light: #33d7e6;
+  --ifm-color-primary-lighter: #3ed9e7;
+  --ifm-color-primary-lightest: #60e0eb;
+
+  --ifm-font-color-base: #e5e7eb;
+  --ifm-heading-color: #e5e7eb;
+  --ifm-color-content-secondary: #9ca3af;
+
+  --ifm-background-color: #111827;
+  --ifm-background-surface-color: #1f2937;
+  --ifm-navbar-background-color: #1f2937;
+  /* Footer conservé sombre/cohérent dans les deux modes. */
+
+  --ifm-color-emphasis-0: #111827;
+  --ifm-color-emphasis-100: #1f2937;
+  --ifm-color-emphasis-200: #374151;
+  --ifm-color-emphasis-300: #4b5563;
+
+  --ifm-toc-border-color: #374151;
+  --ifm-table-border-color: #374151;
+  --ifm-table-head-background: #111827;
+  --ifm-table-stripe-background: #1a2233;
+  --ifm-hr-background-color: #374151;
+
+  --ifm-code-background: #1f2937;
+  --docusaurus-highlighted-code-line-bg: rgba(28, 210, 227, 0.15);
+
+  --ifm-global-shadow-lw: 0 0 0 1px rgba(255, 255, 255, 0.10);
+  --ifm-global-shadow-md: 0 0 0 1px rgba(255, 255, 255, 0.16);
+  --ifm-global-shadow-tl: 0 24px 64px rgba(0, 0, 0, 0.55);
+}
+
+/* ============================================================================
+   Touches de marque Setics (légères, sans swizzle)
+   ========================================================================== */
+/* Liseré d'accent en haut de navbar — rappelle l'identité du kit (liseré modale). */
+.navbar {
+  border-top: 3px solid var(--ifm-color-primary);
+  box-shadow: var(--ifm-global-shadow-lw);
+}
+
+/* Footer aux couleurs de marque dans les deux modes. */
+.footer--dark {
+  --ifm-footer-background-color: #27303f;
+  --ifm-footer-color: #c8cee0;
+  --ifm-footer-link-color: #c8cee0;
+  --ifm-footer-title-color: #ffffff;
+}
+.footer--dark .footer__link-item:hover {
+  color: var(--ifm-color-primary);
 }

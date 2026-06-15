@@ -109,11 +109,9 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'STTAR Docs',
-      logo: {
-        alt: 'STTAR',
-        src: 'img/logo.svg',
-      },
+      title: 'Setics Sttar Docs',
+      // Pas de logo mascotte Docusaurus (hors charte). Un logo Setics SVG
+      // pourra être déposé dans static/img/ et référencé ici quand disponible.
       items: [
         {
           type: 'doc',
