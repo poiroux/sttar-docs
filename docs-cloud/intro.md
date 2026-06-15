@@ -33,11 +33,11 @@ manual](/advanced-designer/intro)** — the Cloud service runs the same engine.
 
 ## Planned chapters
 
-- **Getting started** — signing in, workspaces, and uploading a project.
-- **Working in the browser** — the hosted equivalents of the desktop tabs.
-- **Running optimizations** — launching and monitoring design runs.
-- **Deliverables & export** — retrieving reports and GIS layers.
-- **Administration** — users, roles and entitlements.
+- **[Getting started](/cloud/getting-started)** — signing in, workspaces, and uploading a project.
+- **[Working in the browser](/cloud/working-in-the-browser)** — the hosted equivalents of the desktop tabs.
+- **[Running optimizations](/cloud/running-optimizations)** — launching and monitoring design runs.
+- **[Deliverables & export](/cloud/deliverables-and-export)** — retrieving reports and GIS layers.
+- **[Administration](/cloud/administration)** — users, roles and entitlements.
 
 > These are placeholders pending the product decision tracked in the
 > documentation-platform content inventory (open item: Cloud entitlement &

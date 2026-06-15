@@ -142,9 +142,16 @@ const config: Config = {
           label: 'Cloud',
         },
         {
-          to: '/downloads',
-          label: 'Downloads',
+          type: 'dropdown',
+          label: 'Resources',
           position: 'left',
+          items: [
+            {to: '/getting-started', label: 'Getting started'},
+            {to: '/downloads', label: 'Downloads'},
+            {to: '/licensing', label: 'Licensing'},
+            {to: '/system-requirements', label: 'System requirements'},
+            {to: '/troubleshooting', label: 'Troubleshooting & FAQ'},
+          ],
         },
         {
           type: 'docsVersionDropdown',
@@ -168,6 +175,16 @@ const config: Config = {
             {label: 'Planner', to: '/planner/intro'},
             {label: 'Batch Engine', to: '/batch-engine/intro'},
             {label: 'Cloud', to: '/cloud/intro'},
+          ],
+        },
+        {
+          title: 'Resources',
+          items: [
+            {label: 'Getting started', to: '/getting-started'},
+            {label: 'Downloads', to: '/downloads'},
+            {label: 'Licensing', to: '/licensing'},
+            {label: 'System requirements', to: '/system-requirements'},
+            {label: 'Troubleshooting & FAQ', to: '/troubleshooting'},
           ],
         },
       ],
