@@ -5,88 +5,59 @@ title: What changed
 
 # What changed in this version
 
-This page is **per-version**: switch releases with the navbar version picker
-and this page shows the changes for the selected release.
+Release notes for STTAR 2.5 (the current *Next* line).
 
-## STTAR 2.5 (Advanced Designer)
+Sttar 2.5 is a major release that refreshes the visual identity, modernizes the technology stack, introduces the standalone License Manager utility, expands data-import and attribute-mapping capabilities, and brings significant performance and ergonomy improvements across the application.
 
-### New and improved
+### Highlights
 
-- **New application branding** — updated Setics "S" application icon, a
-  refreshed About window, and a new 2026 icon set for the toolbar and menus.
-- **Animated startup splash screen** — the splash is now rendered with WebView2
-  (Chromium) and loads fully offline.
-- **License Manager utility** — a standalone tool to manage your CodeMeter
-  license containers (including drag-and-drop of CodeMeter files), launched from
-  **Help ▸ License Manager**. It requires the **.NET Desktop Runtime 8.0**
-  (see *Installation*).
-- **Vetro FiberMap integration** — a new optional plugin that exports the
-  network design to the Vetro FiberMap platform via its REST API (see
-  *Export Network Data*).
-- **Germany Region Kit** — a new **BFP-GIS-NB v5.0.1** GeoJSON export, alongside
-  the existing v4.0 report.
-- **New connectivity attributes** — `ConnectingAccessStructure` can be imported
-  to map the access structure a connecting edge terminates on, and the
-  connecting structure's name is now written to the `Net_Endpoints` and
-  `Net_Nodes` GIS exports (`INFCONNAME`).
-- **Endpoint categories** — a new `EndpointCategory` attribute can be imported,
-  is carried through the model, and is output in the `Net_Lines` export; the
-  equipment database gains a *Manhole* category.
-- **Node placement by served endpoints** — node placement can now cluster by the
-  number of served endpoints, in addition to the existing geometric clustering.
-- **Service area buffer option** — the service-area polygon buffer size is now
-  configurable in **Tools ▸ Options ▸ GIS & Topology** (previously a fixed
-  default).
-- **New preprocessing filter** — *Split Linestrings by Lines* splits a linestring
-  layer at its intersections with a second linestring layer (Support Source
-  Picker).
-- **Cancellable cabling** — the cabling step now stops promptly when you cancel a
-  running optimization.
-- **Coordinate system selector** rebuilt for more reliable entry of EPSG codes,
-  free text and the WGS84 shortcut (Project tab).
-- **Obstacle properties from the map** — right-click an obstacle support to open
-  its properties, as for pathways, nodes and endpoints (Map tab).
-- **Support resolution** — the upper limit on the resolution value has been
-  removed; any value greater than `0` is accepted (Support Source Picker).
-- **Clearer version-mismatch warning** — opening a project distinguishes
-  "created by an earlier version" from "created by a later version".
-- **Consolidated import validation** — source-import validation issues are shown
-  in a single dialog, and the invalid-settings warning now points to the
-  *Validation Notes* tab.
-- **Attribute mapping improvements** — constant values are validated on entry,
-  the column layout is clearer, and all labels are localized (EN/FR/DE).
+- **New — 2026 visual identity**  
+  New "S" application logo, refreshed toolbar and menu icons, and a redesigned HTML splash banner powered by WebView2 with an animated progress indicator.
+- **New — License Manager utility**  
+  A new standalone tool for managing CodeMeter licenses. Drag-and-drop support for CodeMeter files, taskbar indicators for service and local-server status, and a dedicated menu entry in the main application.
+- **New — Endpoint categories**  
+  Endpoints can now carry a category attribute, importable from source data and used throughout the design pipeline.
+- **New — Connecting Access Structure attribute**  
+  A new `ConnectingAccessStructureName` attribute records the access structure used when creating connecting edges; importable at project setup.
+- **New — Vetro FiberMap integration plugin**  
+  Full Vetro integration plugin covering all relevant layers and attributes for round-trip exchange with Vetro FiberMap.
+- **New — Modernized technology stack**  
+  The application now requires Microsoft.NET Framework 4.8 (general use) and Microsoft.NET Desktop Runtime 8.0 (License Manager). GDAL/OGR has been upgraded to version 3.8.4 for improved geospatial support.
 
-### Fixes
+### Improvements
 
-- OSM data is preserved when reopening an `.sdconfig` project, and OSM point
-  download is compatible with GDAL 3.8.4.
-- GIS engine upgraded to **GDAL/OGR 3.8.4**; `.dxf` feature export fixed.
-- Priority routing no longer resets node capacity between passes.
-- Obstacle supports no longer discard loop edges.
-- *Planner* edition: the **Add Obstacle Support** command is no longer wrongly
-  hidden.
-- Switching the basemap provider while the basemap is hidden no longer leaves
-  the map inconsistent.
-- The English label for the Euro currency is corrected (was "Croatian Kuna").
-- Several preprocessing filters now pre-sort their input geometrically for
-  deterministic output.
-- Performance: faster map selection on large layers, faster service-area
-  loading, and general algorithm speed-ups.
+- **Improved — Attribute mapping overhaul**  
+  A new attribute-selector view with type-aware input parsing, default values, colour-coded specific values, placeholders and tooltips. Nullable types are properly handled, user input is validated against the attribute data type, and duplicates on source reload are eliminated.
+- **Improved — Map selection performance**  
+  Significant speed-ups when selecting and deselecting features on the map. The rectangle and polygon selection tools have been refactored onto a shared base for consistent behaviour.
+- **Improved — Service area loading and buffer size**  
+  Service-area loading is faster, and a new service area buffer size setting gives users finer control over service-area generation.
+- **Improved — Cabling algorithm cancellation**  
+  The cabling algorithm now responds to cancellation requests, so long optimizations can be safely interrupted.
+- **Improved — Attribute table — group similar values**  
+  The attribute table view now groups similar values for faster bulk inspection, with copy/paste support across cells.
+- **Improved — Validation notes**  
+  Validation notes are now triggered automatically whenever a support source is loaded or unloaded. The "project contains invalid settings" prompt now displays detailed information about the offending notes.
+- **Improved — Cross-version project loading**  
+  A confirmation dialog is shown when opening a project created by a different version of the application, reducing the risk of unintended migrations.
+- **Improved — Export attributes**  
+  A new `INFCONNAME` column in the `Net_Endpoints` and `Net_Nodes` exports indicates the name of the vertex each item connects to.
+- **Improved — 2.5 ergonomy pass**  
+  A dedicated round of UI polish: toolbar groups reorganized, optimization-step icons wired through the project details view, and the network-reset action gets its own distinct icon.
 
-### Requirements
+### Bug fixes
 
-- Now requires **.NET Framework 4.8** (raised from 4.6.2 / 4.7.2) and the
-  **Visual C++ 2022** redistributable. See *Installation ▸ Hardware & Software
-  Requirements*.
-
-## STTAR 2.4 (Advanced Designer)
-
-- Added `ParentId` to the `Support` data model (tree topology).
-- DetourRouter `MaxDistanceToRoute` is now scope-aware.
-- Naming-rule edits are committed before a run or tab switch.
-
-### Previously, in 2.3
-
-- Initial documented baseline for the Advanced Designer manual.
-- New `Support` data-model reference page.
-- Optimizer progress reporting reworked.
+- **Fixed — Infinite loop on legacy SDCONFIG files**  
+  An infrequent infinite loop when loading SDCONFIG files containing unknown element types (for instance undefined reports) has been resolved.
+- **Fixed — Basemap activation**  
+  Enabling the basemap after a source/provider change while the basemap was hidden no longer fails to refresh.
+- **Fixed — Obstacle commands in the Planner Edition**  
+  Obstacle-related commands on the Infrastructure Model view in the Planner Edition now work as expected.
+- **Fixed — Currency labels**  
+  The Euro currency was previously displayed under an incorrect English name — now resolved.
+- **Fixed — OSM import**  
+  Temporary-file creation when downloading points from OpenStreetMap is now compatible with the upgraded OGR version.
+- **Fixed — Routing on conduit and capacity edge cases**  
+  Several routing issues have been corrected: capacity reset on nodes during priority routing, missing SRS on certain support sources, null-reference cases in attribute mapping, and conduit-design failure logging.
+- **Fixed — Support source picker**  
+  Display resolution issues in the support-source picker have been resolved.
