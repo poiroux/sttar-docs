@@ -7,7 +7,7 @@ title: Working in the browser
 
 The hosted equivalents of the desktop application tabs.
 
-:::warning Draft — pending product decision
+:::warning[Draft — pending product decision]
 The browser UI is not documented yet. This page will map each desktop tab
 (Project, Map, Infrastructure, Architecture, Cable System, Ducts, Network
 Optimization, Results) to its hosted equivalent once the Cloud interface is

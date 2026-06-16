@@ -22,7 +22,7 @@ four menus: **File**, **Project**, **Tools** and **Help**.
 | **Recent projects** | Reopens a recent project. Projects whose file is no longer accessible are greyed out. | |
 | **Exit** | Exits Setics Sttar. If a license server is in use, the license is released. | Alt + F4 |
 
-:::info Project file formats
+:::info[Project file formats]
 - **`.sdproj`** — a compressed *Advanced Designer* project file containing the
   project settings **and** a local copy of the infrastructure and architecture
   data (reusable infrastructure, nodes, endpoints). Cabling data is **not**

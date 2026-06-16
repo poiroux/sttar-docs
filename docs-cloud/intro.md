@@ -9,7 +9,7 @@ title: Introduction
 fiber-network design and optimization engine delivered as a managed service
 rather than a desktop install.
 
-:::warning Draft — scope being defined
+:::warning[Draft — scope being defined]
 This manual is a **placeholder**. The Cloud product surface and its
 documentation scope are still being settled (dedicated Cloud manual vs. reusing
 the desktop manuals), and the entitlement mapping (which license unlocks Cloud)

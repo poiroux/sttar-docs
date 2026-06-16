@@ -23,7 +23,7 @@ available to any signed-in user — it is not gated by product license type.
 |---|---|
 | **CodeMeter Runtime** | Required for license validation. Install before launching STTAR. |
 
-:::info Where the installers come from
+:::info[Where the installers come from]
 On the current support portal these downloads are hosted externally (release
 binaries on the delivery server, older builds on shared drives). On this new
 documentation platform the **binaries stay on a host/CDN** and this page links

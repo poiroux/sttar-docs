@@ -33,7 +33,7 @@ The tab has six parts:
 | **Available cables** | Adds available cables for the level and/or infrastructures, from the Equipment Database. |
 | **Available equipment** | Adds available equipment for the level and/or infrastructures, from the Equipment Database. |
 
-:::info Level definition
+:::info[Level definition]
 Level *N* includes the *N*-level nodes themselves plus the infrastructure
 sections connecting the upstream node (level *N−1* or lower, if it exists) to its
 downstream level-*N* nodes.

@@ -30,7 +30,7 @@ connected to the server. Clients and server communicate over IP on **TCP ports
   higher (32-bit and 64-bit Windows) included in the installation package, or
   let the setup assistant download and install it.
 
-:::note License Manager utility
+:::note[License Manager utility]
 The optional **License Manager** tool (launched from **Help ▸ License Manager**)
 is a separate executable that requires the **Microsoft .NET Desktop Runtime
 8.0**. The main application does not depend on it.

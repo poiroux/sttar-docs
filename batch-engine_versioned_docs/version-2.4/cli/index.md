@@ -37,7 +37,7 @@ return code is available:
 START /WAIT sttar -c project.sdconfig -o c:\temp
 ```
 
-:::info Unattended runs
+:::info[Unattended runs]
 For a fully unattended run, accept the licence terms with `--accepteula` and, if
 the machine hosts several licences, select one with `--licenseid` (optionally
 `--activatelicense`). Without `--accepteula` an unaccepted EULA stops the run

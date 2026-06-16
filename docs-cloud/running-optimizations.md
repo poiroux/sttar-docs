@@ -7,7 +7,7 @@ title: Running optimizations
 
 Launching and monitoring design runs on the hosted service.
 
-:::warning Draft — pending product decision
+:::warning[Draft — pending product decision]
 Cloud run management is not documented yet. This page will cover launching,
 monitoring and retrieving the results of hosted optimization runs once the
 product surface is defined.

@@ -17,7 +17,7 @@ installation kit (for example `Setics Sttar Setup <version>.exe`).
 
 Setics Sttar is now ready for use.
 
-:::info HTTP proxy
+:::info[HTTP proxy]
 If your organization requires an HTTP proxy to access the Internet, CodeMeter
 needs it too, in order to update the license-key times from certified Internet
 time servers. Configure it in **CodeMeter WebAdmin** under
