@@ -35,11 +35,14 @@
   --ifm-font-family-monospace: 'Fira Mono', 'Consolas', 'SFMono-Regular', Menlo, monospace;
   --ifm-heading-font-family: var(--ifm-font-family-base);
   --ifm-font-weight-semibold: 600;
+  /* Charte : la hiérarchie passe par la GRAISSE (600), pas le 700 par défaut. */
+  --ifm-heading-font-weight: 600;
   --ifm-code-font-size: 92%;
 
   /* Texte / liens / neutres. */
   --ifm-font-color-base: #27303f;
-  --ifm-heading-color: #27303f;
+  /* Titres légèrement plus foncés que le corps (charte : #1a1d23). */
+  --ifm-heading-color: #1a1d23;
   --ifm-color-content-secondary: #74788d;
   --ifm-link-color: var(--ifm-color-primary);
   --ifm-link-hover-color: var(--ifm-color-primary-dark);
@@ -67,12 +70,29 @@
   --ifm-code-background: #f5f7fa;
   --docusaurus-highlighted-code-line-bg: rgba(0, 175, 191, 0.10);
 
-  /* Rayons & ombres de la charte. */
+  /* Rayons & ombres de la charte. Élévation par l'OMBRE, pas la bordure dure.
+     Deux ombres distinctes : carte (bleu-gris) vs menu/popover (encre). */
   --ifm-global-radius: 8px;
   --ifm-button-border-radius: 6px;
   --ifm-global-shadow-lw: 0 1px 4px rgba(126, 142, 177, 0.10);
-  --ifm-global-shadow-md: 0 2px 8px rgba(126, 142, 177, 0.12);
-  --ifm-global-shadow-tl: 0 24px 64px rgba(39, 48, 63, 0.28);
+  --ifm-global-shadow-md: 0 2px 12px rgba(126, 142, 177, 0.15);   /* carte/sidebar flottante */
+  --ifm-global-shadow-tl: 0 4px 20px rgba(39, 48, 63, 0.12);      /* menu/dropdown (encre) */
+
+  /* ── Les 3 systèmes de couleur de la charte (à ne pas confondre) ──────────
+     (1) accent teal = --ifm-color-primary ci-dessus.
+     (2) palette d'ÉTATS (saturée) — statuts, carto.
+     (3) palette SÉMANTIQUE « badge » — texte fort + fond 10 % (badges/rôles/tags). */
+  --sn-state-1: #f94144; --sn-state-2: #f8961e; --sn-state-3: #f9c74f;
+  --sn-state-4: #90be6d; --sn-state-5: #4d908e; --sn-state-6: #277da1;
+  --sn-state-7: #6a4c93;
+
+  --sn-sem-green-fg:  #00875a; --sn-sem-green-bg:  rgba(0, 135, 90, 0.1);
+  --sn-sem-blue-fg:   #0052cc; --sn-sem-blue-bg:   rgba(0, 82, 204, 0.1);
+  --sn-sem-orange-fg: #cc6f00; --sn-sem-orange-bg: rgba(255, 139, 0, 0.1);
+  --sn-sem-yellow-fg: #b86e00; --sn-sem-yellow-bg: rgba(255, 171, 0, 0.1);
+  --sn-sem-red-fg:    #de350b; --sn-sem-red-bg:    rgba(222, 53, 11, 0.1);
+  --sn-sem-gray-fg:   #6b778c; --sn-sem-gray-bg:   rgba(107, 119, 140, 0.1);
+  --sn-sem-teal-fg:   #00afbf; --sn-sem-teal-bg:   rgba(0, 175, 191, 0.1);
 }
 
 /* ============================================================================
@@ -113,7 +133,17 @@
 
   --ifm-global-shadow-lw: 0 0 0 1px rgba(255, 255, 255, 0.10);
   --ifm-global-shadow-md: 0 0 0 1px rgba(255, 255, 255, 0.16);
-  --ifm-global-shadow-tl: 0 24px 64px rgba(0, 0, 0, 0.55);
+  --ifm-global-shadow-tl: 0 4px 20px rgba(0, 0, 0, 0.55);
+
+  /* Palette sémantique « badge » : on éclaircit le texte pour le contraste
+     sur fond sombre ; le fond @10 % reste lisible tel quel. */
+  --sn-sem-green-fg:  #36b37e;
+  --sn-sem-blue-fg:   #4c9aff;
+  --sn-sem-orange-fg: #ffab00;
+  --sn-sem-yellow-fg: #ffc400;
+  --sn-sem-red-fg:    #ff7452;
+  --sn-sem-gray-fg:   #a5adba;
+  --sn-sem-teal-fg:   #33d7e6;
 }
 
 /* ============================================================================
@@ -134,4 +164,41 @@
 }
 .footer--dark .footer__link-item:hover {
   color: var(--ifm-color-primary);
+}
+
+/* ============================================================================
+   Primitives de la charte appliquées à Infima (sans swizzle)
+   ========================================================================== */
+
+/* Tableaux denses : en-tête UPPERCASE 11px/600 gris, souligné 2px, aligné gauche.
+   (charte §6 — « th 11/600 #74788d UPPERCASE letter-spacing .4px »). Le corps
+   reste à la taille de lecture du contenu, juste resserré. */
+.markdown table thead th {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: var(--ifm-color-content-secondary);
+  text-align: left;
+  border-bottom: 2px solid var(--ifm-table-border-color);
+}
+.markdown table td,
+.markdown table th {
+  padding: 6px 12px;
+}
+
+/* Focus clavier : liseré teal net, SANS halo (charte : pas de glow hors login). */
+a:focus-visible,
+button:focus-visible,
+.navbar__link:focus-visible,
+.menu__link:focus-visible,
+.pagination-nav__link:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+  border-radius: var(--ifm-button-border-radius);
+}
+
+/* Liens de contenu : teal souligné, offset 2px (primitive sn-link). */
+.markdown a:not(.button):not(.card) {
+  text-underline-offset: 2px;
 }
