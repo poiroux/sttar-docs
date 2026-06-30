@@ -638,7 +638,7 @@
  <div class="change-row">
  <span class="tag feature">New</span>
  <div class="change-body">
- <div class="change-title">Design Instructions Visualizer</div>
+ <div class="change-title">Design Instructions Visualizer <span class="build-tag">2.4.6.5841</span></div>
  <div class="change-desc">A dedicated window listing every design instruction in the current project,
  with a detail panel showing all properties of the selected instruction, search, refresh and
  "locate on map" actions, and an updated icon in the menu and on the map context menu.</div>
@@ -651,7 +651,7 @@
  <div class="change-row">
  <span class="tag feature">New</span>
  <div class="change-body">
- <div class="change-title">Map-driven filtering of design instructions</div>
+ <div class="change-title">Map-driven filtering of design instructions <span class="build-tag">2.4.6.5841</span></div>
  <div class="change-desc">Filter the list to instructions attached to the currently selected map
  elements. Supports single and multi-selection, a one-shot snapshot mode and an opt-in
  "lock to map selection" live mode, with a clear filter chip showing the selected element
@@ -665,33 +665,36 @@
  <div class="change-row">
  <span class="tag feature">New</span>
  <div class="change-body">
- <div class="change-title">Cost-override option in the Bill of Quantities</div>
+ <div class="change-title">Cost-override option in the Bill of Quantities <span class="build-tag">2.4.6.5828</span></div>
  <div class="change-desc">Nodes and endpoints can now carry a cost-override flag that is reflected in
  the BOQ output, giving more flexibility for project-specific pricing.</div>
  </div>
  </div>
+ 
  </li>
 
  <li>
  <div class="change-row">
  <span class="tag feature">New</span>
  <div class="change-body">
- <div class="change-title">Clustering by served endpoints</div>
+ <div class="change-title">Clustering by served endpoints <span class="build-tag">2.4.6.5828</span></div>
  <div class="change-desc">A new option drives clustering and node placement based on the number of
  served endpoints, complementing the existing distance-based criteria.</div>
  </div>
  </div>
+ 
  </li>
 
  <li>
  <div class="change-row">
  <span class="tag feature">New</span>
  <div class="change-body">
- <div class="change-title">Node Placement By Level</div>
+ <div class="change-title">Node Placement By Level <span class="build-tag">2.4.6.5830</span></div>
  <div class="change-desc">Architecture branches are now merged into a common parent <em>Support</em>
  and placed level-by-level, producing more predictable node layouts on multi-tier networks.</div>
  </div>
  </div>
+ 
  </li>
  </ul>
 
@@ -703,7 +706,7 @@
  <div class="change-row">
  <span class="tag improve">Improved</span>
  <div class="change-body">
- <div class="change-title">Smarter splice handling on cable merge</div>
+ <div class="change-title">Smarter splice handling on cable merge <span class="build-tag">2.4.6.5840</span></div>
  <div class="change-desc">When merging cables, the existing splice closure is now re-used instead of
  creating a new straight joint, and obsolete closures are removed automatically.</div>
  </div>
@@ -715,18 +718,19 @@
  <div class="change-row">
  <span class="tag improve">Improved</span>
  <div class="change-body">
- <div class="change-title">Cassette numbering preserved</div>
+ <div class="change-title">Cassette numbering preserved <span class="build-tag">2.4.6.5840</span></div>
  <div class="change-desc">Cassette numbers are now preserved on straight-joint fibers and added to
  unused fibers for consistency in splice-plan reports.</div>
  </div>
  </div>
+ 
  </li>
 
  <li>
  <div class="change-row">
  <span class="tag improve">Improved</span>
  <div class="change-body">
- <div class="change-title">Connection status propagation</div>
+ <div class="change-title">Connection status propagation <span class="build-tag">2.4.6.5840</span></div>
  <div class="change-desc">New connection statuses (5 and 6) flag nodes placed despite parent capacity
  constraints and propagate through downstream nodes and endpoints, keeping the network state
  coherent for reporting.</div>
@@ -739,34 +743,37 @@
  <div class="change-row">
  <span class="tag improve">Improved</span>
  <div class="change-body">
- <div class="change-title">Routing through network nodes</div>
+ <div class="change-title">Routing through network nodes <span class="build-tag">2.4.6.5840</span></div>
  <div class="change-desc">Detours when routing through a network node have been reduced by removing
  unnecessary node-related edges from the routing graph; the downstream-nodes metric has been
  corrected.</div>
  </div>
  </div>
+ 
  </li>
 
  <li>
  <div class="change-row">
  <span class="tag improve">Improved</span>
  <div class="change-body">
- <div class="change-title">Batch engine</div>
+ <div class="change-title">Batch engine <span class="build-tag">2.4.6.5828</span></div>
  <div class="change-desc">A pass of robustness and consistency improvements has been applied to the
  batch engine, including a new basic progress manager for cable merging.</div>
  </div>
  </div>
+ 
  </li>
 
  <li>
  <div class="change-row">
  <span class="tag improve">Improved</span>
  <div class="change-body">
- <div class="change-title">Duct model instructions</div>
+ <div class="change-title">Duct model instructions <span class="build-tag">2.4.6.5840</span></div>
  <div class="change-desc">The duct-model instruction can now be modified, giving more control over
  the assembly of duct designs.</div>
  </div>
  </div>
+ 
  </li>
  </ul>
 
@@ -778,7 +785,7 @@
  <div class="change-row">
  <span class="tag fix">Fixed</span>
  <div class="change-body">
- <div class="change-title">SimplifyBranchingAtNodes path validation</div>
+ <div class="change-title">SimplifyBranchingAtNodes path validation <span class="build-tag">2.4.6.5841</span></div>
  <div class="change-desc">The full control-tree path from joint to descendant is now validated when
  simplifying branching at nodes, preventing invalid simplifications.</div>
  </div>
@@ -790,7 +797,7 @@
  <div class="change-row">
  <span class="tag fix">Fixed</span>
  <div class="change-body">
- <div class="change-title">Edge characteristics on partial RebuildEdges</div>
+ <div class="change-title">Edge characteristics on partial RebuildEdges <span class="build-tag">2.4.6.5841</span></div>
  <div class="change-desc">Edge characteristics are now copied rather than swapped during a partial
  <em>RebuildEdges</em> operation, avoiding stale references on neighbouring edges.</div>
  </div>
@@ -802,7 +809,7 @@
  <div class="change-row">
  <span class="tag fix">Fixed</span>
  <div class="change-body">
- <div class="change-title">User state preserved across RebuildEdges</div>
+ <div class="change-title">User state preserved across RebuildEdges <span class="build-tag">2.4.6.5841</span></div>
  <div class="change-desc">Imposed and Deleted user-state flags are now preserved across the reset
  performed by <em>RebuildEdges</em>.</div>
  </div>
@@ -814,7 +821,7 @@
  <div class="change-row">
  <span class="tag fix">Fixed</span>
  <div class="change-body">
- <div class="change-title">Splice plan report</div>
+ <div class="change-title">Splice plan report <span class="build-tag">2.4.6.5828</span></div>
  <div class="change-desc">Hyperlink formatting in the splice-plan report has been corrected.</div>
  </div>
  </div>
@@ -825,7 +832,7 @@
  <div class="change-row">
  <span class="tag fix">Fixed</span>
  <div class="change-body">
- <div class="change-title">Support Source picker robustness</div>
+ <div class="change-title">Support Source picker robustness <span class="build-tag">2.4.6.5828</span></div>
  <div class="change-desc">The Support Source picker no longer fails to open when the FME executable
  cannot be located; a graceful fallback is used instead.</div>
  </div>
@@ -837,7 +844,7 @@
  <div class="change-row">
  <span class="tag fix">Fixed</span>
  <div class="change-body">
- <div class="change-title">Valid layers dictionary</div>
+ <div class="change-title">Valid layers dictionary <span class="build-tag">2.4.6.5840</span></div>
  <div class="change-desc">Only distinct elements are added to the valid-layers dictionary, preventing
  duplicate entries on certain projects.</div>
  </div>
@@ -849,7 +856,7 @@
  <div class="change-row">
  <span class="tag fix">Fixed</span>
  <div class="change-body">
- <div class="change-title">GDAL native dependency redirects</div>
+ <div class="change-title">GDAL native dependency redirects <span class="build-tag">2.4.6.5841</span></div>
  <div class="change-desc">Binding redirects for the GDAL native libraries are now pinned to the
  shipped 3.3.2 build, eliminating a startup <code>TypeInitializationException</code> seen
  on some installations.</div>
