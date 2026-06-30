@@ -13,47 +13,47 @@ Sttar 2.4.6 introduces the Design Instructions Visualizer — a new window for b
 
 ### Highlights
 
-- **New — Design Instructions Visualizer**  
+- **New — Design Instructions Visualizer** _(2.4.6.5841)_  
   A dedicated window listing every design instruction in the current project, with a detail panel showing all properties of the selected instruction, search, refresh and "locate on map" actions, and an updated icon in the menu and on the map context menu.
-- **New — Map-driven filtering of design instructions**  
+- **New — Map-driven filtering of design instructions** _(2.4.6.5841)_  
   Filter the list to instructions attached to the currently selected map elements. Supports single and multi-selection, a one-shot snapshot mode and an opt-in "lock to map selection" live mode, with a clear filter chip showing the selected element names and a one-click reset.
-- **New — Cost-override option in the Bill of Quantities**  
+- **New — Cost-override option in the Bill of Quantities** _(2.4.6.5828)_  
   Nodes and endpoints can now carry a cost-override flag that is reflected in the BOQ output, giving more flexibility for project-specific pricing.
-- **New — Clustering by served endpoints**  
+- **New — Clustering by served endpoints** _(2.4.6.5828)_  
   A new option drives clustering and node placement based on the number of served endpoints, complementing the existing distance-based criteria.
-- **New — Node Placement By Level**  
+- **New — Node Placement By Level** _(2.4.6.5830)_  
   Architecture branches are now merged into a common parent Support and placed level-by-level, producing more predictable node layouts on multi-tier networks.
 
 ### Improvements
 
-- **Improved — Smarter splice handling on cable merge**  
+- **Improved — Smarter splice handling on cable merge** _(2.4.6.5840)_  
   When merging cables, the existing splice closure is now re-used instead of creating a new straight joint, and obsolete closures are removed automatically.
-- **Improved — Cassette numbering preserved**  
+- **Improved — Cassette numbering preserved** _(2.4.6.5840)_  
   Cassette numbers are now preserved on straight-joint fibers and added to unused fibers for consistency in splice-plan reports.
-- **Improved — Connection status propagation**  
+- **Improved — Connection status propagation** _(2.4.6.5840)_  
   New connection statuses (5 and 6) flag nodes placed despite parent capacity constraints and propagate through downstream nodes and endpoints, keeping the network state coherent for reporting.
-- **Improved — Routing through network nodes**  
+- **Improved — Routing through network nodes** _(2.4.6.5840)_  
   Detours when routing through a network node have been reduced by removing unnecessary node-related edges from the routing graph; the downstream-nodes metric has been corrected.
-- **Improved — Batch engine**  
+- **Improved — Batch engine** _(2.4.6.5828)_  
   A pass of robustness and consistency improvements has been applied to the batch engine, including a new basic progress manager for cable merging.
-- **Improved — Duct model instructions**  
+- **Improved — Duct model instructions** _(2.4.6.5840)_  
   The duct-model instruction can now be modified, giving more control over the assembly of duct designs.
 
 ### Bug fixes
 
-- **Fixed — SimplifyBranchingAtNodes path validation**  
+- **Fixed — SimplifyBranchingAtNodes path validation** _(2.4.6.5841)_  
   The full control-tree path from joint to descendant is now validated when simplifying branching at nodes, preventing invalid simplifications.
-- **Fixed — Edge characteristics on partial RebuildEdges**  
+- **Fixed — Edge characteristics on partial RebuildEdges** _(2.4.6.5841)_  
   Edge characteristics are now copied rather than swapped during a partial RebuildEdges operation, avoiding stale references on neighbouring edges.
-- **Fixed — User state preserved across RebuildEdges**  
+- **Fixed — User state preserved across RebuildEdges** _(2.4.6.5841)_  
   Imposed and Deleted user-state flags are now preserved across the reset performed by RebuildEdges.
-- **Fixed — Splice plan report**  
+- **Fixed — Splice plan report** _(2.4.6.5828)_  
   Hyperlink formatting in the splice-plan report has been corrected.
-- **Fixed — Support Source picker robustness**  
+- **Fixed — Support Source picker robustness** _(2.4.6.5828)_  
   The Support Source picker no longer fails to open when the FME executable cannot be located; a graceful fallback is used instead.
-- **Fixed — Valid layers dictionary**  
+- **Fixed — Valid layers dictionary** _(2.4.6.5840)_  
   Only distinct elements are added to the valid-layers dictionary, preventing duplicate entries on certain projects.
-- **Fixed — GDAL native dependency redirects**  
+- **Fixed — GDAL native dependency redirects** _(2.4.6.5841)_  
   Binding redirects for the GDAL native libraries are now pinned to the shipped 3.3.2 build, eliminating a startup `TypeInitializationException` seen on some installations.
 
 ## 2.4.5 — Released November 2025 · build 2.4.5.5827
