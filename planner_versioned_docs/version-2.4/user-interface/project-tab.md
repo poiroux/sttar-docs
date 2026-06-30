@@ -13,7 +13,7 @@ The Project tab is divided into five parts:
 - **Shortcuts**
 - **Project Summary Data**
 
-> 🖼️ *Screenshot to migrate: the Project tab.*
+![The Project tab](/img/manuals/fig19_v2.png)
 
 ## General Project Properties
 

@@ -18,7 +18,7 @@ In addition, two contextual toolbars are available:
 - **[Navigation tools](./navigation-tools)** — pan and zoom.
 - **[Work tools](./work-tools)** — select, create, modify and delete elements.
 
-> 🖼️ *Screenshot to migrate: the Map tab with its panels highlighted.*
+![The Map tab with its panels highlighted](/img/manuals/capturecarte-rect.png)
 
 This chapter covers each part in turn:
 
