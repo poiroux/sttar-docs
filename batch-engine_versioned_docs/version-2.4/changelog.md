@@ -41,6 +41,8 @@ Sttar 2.4.6 introduces the Design Instructions Visualizer — a new window for b
 
 ### Bug fixes
 
+- **Fixed — Naming-rule edits no longer lost on run or tab switch** _(2.4.6.5842)_  
+  An in-progress edit in the Naming Rules editor is now committed before an optimization runs or you switch tabs, so the value being typed is preserved instead of being discarded.
 - **Fixed — SimplifyBranchingAtNodes path validation** _(2.4.6.5841)_  
   The full control-tree path from joint to descendant is now validated when simplifying branching at nodes, preventing invalid simplifications.
 - **Fixed — Edge characteristics on partial RebuildEdges** _(2.4.6.5841)_  
