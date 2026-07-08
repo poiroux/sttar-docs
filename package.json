@@ -6,6 +6,7 @@
     "docusaurus": "docusaurus",
     "sync:shared": "node scripts/sync-shared-manuals.mjs",
     "gen:changelog": "node scripts/gen-changelog.mjs",
+    "scan:builds": "node scripts/scan-builds.mjs",
     "prestart": "npm run sync:shared",
     "start": "docusaurus start",
     "prebuild": "npm run sync:shared",
