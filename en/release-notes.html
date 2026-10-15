@@ -268,20 +268,17 @@
       border-radius: 6px; cursor: pointer; }
     .pdf-btn:hover, .pdf-btn:focus-visible { background: rgba(255,255,255,.3); }
 
-    /* Print / PDF. Defining page-margin boxes replaces Chrome's own
-       header/footer (page URL, title, date), so the PDF holds only the notes.
-       Four sizes only: 18pt title, 13pt version, 9.5pt text, 7.5pt labels
-       (inline code 8.5pt to match the text's x-height). */
-    @page {
-      size: A4; margin: 12mm 14mm 13mm;
-      @top-left { content: ""; }
-      @bottom-left { content: "Sttar release notes"; font: 7.5pt sans-serif; color: #5b6b85; }
-      @bottom-right { content: counter(page) " / " counter(pages); font: 7.5pt sans-serif; color: #5b6b85; }
-    }
+    /* Print / PDF. Zero top/bottom page margin leaves browsers no room for
+       their own header/footer (page URL, title, date), whatever the print
+       dialog settings; the body padding, cloned on every page, provides the
+       visible margins instead. Four sizes only: 18pt title, 13pt version,
+       9.5pt text, 7.5pt labels (inline code 8.5pt to match the x-height). */
+    @page { size: A4; margin: 0 14mm; }
 
     @media print {
       html, body { background: #fff; font-size: 9.5pt; line-height: 1.4;
                    -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { padding: 12mm 0 13mm; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
       .version-picker, .hero-logo, .back-link, .pdf-btn, footer, .no-results { display: none !important; }
       /* Compact title block, not a cover page. */
       header.hero { background: #fff; color: var(--ink); padding: 0 0 6pt; margin-bottom: 10pt; }
