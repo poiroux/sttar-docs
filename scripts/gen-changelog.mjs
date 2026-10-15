@@ -218,7 +218,7 @@ async function genReleaseNotesPage(raw) {
 
   // A small link back to the docs (relative — baseUrl-agnostic).
   const backLink =
-    '\n  <p style="max-width:960px;margin:0 auto 8px;padding:0 24px;">' +
+    '\n  <p class="back-link" style="max-width:960px;margin:0 auto 8px;padding:0 24px;">' +
     '<a href="./">← Back to documentation</a></p>\n';
 
   const out = head + backLink + body + tail;
