@@ -7,7 +7,7 @@ title: What changed
 
 Cumulative release notes for the STTAR 2.4 line (2.4.0 → 2.4.6).
 
-## 2.4.6 — Maintenance & features · 2026 · maintenance branch
+## 2.4.6 — Maintenance & features · Released September 2026 · build 2.4.6.5848
 
 Sttar 2.4.6 introduces the Design Instructions Visualizer — a new window for browsing, searching and locating design instructions on the map — alongside targeted improvements to routing, cabling and the bill of quantities, and a number of bug fixes carried over from production feedback.
 
@@ -23,6 +23,10 @@ Sttar 2.4.6 introduces the Design Instructions Visualizer — a new window for b
   A new option drives clustering and node placement based on the number of served endpoints, complementing the existing distance-based criteria.
 - **New — Node Placement By Level** _(2.4.6.5830)_  
   Architecture branches are now merged into a common parent Support and placed level-by-level, producing more predictable node layouts on multi-tier networks.
+- **New — Delete design instructions from the Visualizer** _(2.4.6.5843)_  
+  The Design Instructions Visualizer now has a Delete button that removes the selected design instruction directly from the list.
+- **New — Naming variable for the external ID** _(2.4.6.5843)_  
+  Naming rules can now use the element's external ID as a variable.
 
 ### Improvements
 
@@ -38,6 +42,16 @@ Sttar 2.4.6 introduces the Design Instructions Visualizer — a new window for b
   A pass of robustness and consistency improvements has been applied to the batch engine, including a new basic progress manager for cable merging.
 - **Improved — Duct model instructions** _(2.4.6.5840)_  
   The duct-model instruction can now be modified, giving more control over the assembly of duct designs.
+- **Improved — Shorter Batch Engine console output** _(2.4.6.5843)_  
+  In command-line mode, setting parameters with `--setparam` no longer prints run logs, and the run summary is only shown for compute runs, which keeps the console output short and readable.
+- **Improved — Lower memory use across successive runs** _(2.4.6.5845)_  
+  Memory growth when a design is run several times in the same session is reduced.
+- **Improved — Faster infrastructure creation and project opening** _(2.4.6.5846)_  
+  Creating infrastructure on the map is immediate again, projects with many infrastructure elements open faster, and deleting infrastructure no longer causes a crash.
+- **Improved — Excel reports generated last during project export** _(2.4.6.5846)_  
+  Project export now produces the Excel reports last, so the other exported files are available sooner.
+- **Improved — Installer and application signed with the Setics certificate** _(2.4.6.5848)_  
+  The installer and the application files are signed with the official Setics code-signing certificate, so Windows no longer warns about an unrecognized publisher.
 
 ### Bug fixes
 
@@ -57,6 +71,28 @@ Sttar 2.4.6 introduces the Design Instructions Visualizer — a new window for b
   Only distinct elements are added to the valid-layers dictionary, preventing duplicate entries on certain projects.
 - **Fixed — GDAL native dependency redirects** _(2.4.6.5841)_  
   Binding redirects for the GDAL native libraries are now pinned to the shipped 3.3.2 build, eliminating a startup `TypeInitializationException` seen on some installations.
+- **Fixed — Fiber connectivity after a cable merge** _(2.4.6.5843)_  
+  Fiber connectivity no longer fails after a cable merge when a downstream merged cable passes back through the root node, and the splice closure is no longer removed by mistake.
+- **Fixed — Errors when re-running routing, node placement or cabling** _(2.4.6.5845)_  
+  Several errors that could stop an additional run of routing, node placement or cabling on an existing design are fixed.
+- **Fixed — Legend and selection after toggling automatic interconnections** _(2.4.6.5846)_  
+  Toggling automatic interconnections no longer freezes the map legend, leaves a new map empty or causes a crash when selecting elements.
+- **Fixed — Crash when loading a layer in EPSG:9707** _(2.4.6.5848)_  
+  Layers using the EPSG:9707 coordinate system load correctly.
+- **Fixed — Error on the second run of some projects** _(2.4.6.5848)_  
+  A second design run no longer fails on some projects.
+- **Fixed — Routing crash on a second run with imported pathways** _(2.4.6.5848)_  
+  Routing no longer crashes on a second run that imports `net_pathways` when an endpoint is connected to the infrastructure by less than 1 m.
+- **Fixed — Node placement with a missing upstream access structure** _(2.4.6.5848)_  
+  Node placement no longer crashes when the access structure of the upstream pathway is missing, and the missing label of a node placement option is restored.
+- **Fixed — Point infrastructure eligibility uses the infrastructure class again** _(2.4.6.5848)_  
+  Eligibility of point infrastructure takes the infrastructure class into account again; previously only models set to "Any" were eligible.
+- **Fixed — Cable names refreshed after an equipment model change** _(2.4.6.5848)_  
+  Cable names are refreshed when a design instruction changes the equipment model.
+- **Fixed — Optimization interrupted after renaming equipment in the database** _(2.4.6.5848)_  
+  Renaming equipment in the database no longer interrupts the optimization; node equipment names follow the rename.
+- **Fixed — Vetro export: equipment exported with its geometry** _(2.4.6.5848)_  
+  Closures and splitters are now exported to Vetro with their geometry.
 
 ## 2.4.5 — Released November 2025 · build 2.4.5.5827
 

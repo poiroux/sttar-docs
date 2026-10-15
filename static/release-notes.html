@@ -78,20 +78,7 @@
     .version-picker select option { background: #0d1c2e; color: #fff; }
 
     .version-picker .picker-row { display: flex; gap: 10px; align-items: center; }
-    .version-picker .picker-actions { justify-content: flex-end; }
     .version-picker select:disabled { opacity: 0.5; cursor: not-allowed; }
-    .btn-print {
-      appearance: none; -webkit-appearance: none;
-      background: rgba(255,255,255,0.08);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 8px;
-      padding: 8px 14px;
-      font: 600 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
-    }
-    .btn-print:hover { border-color: var(--accent); background-color: rgba(30,127,255,0.18); }
 
     .no-results {
       text-align: center; color: var(--muted);
@@ -189,27 +176,6 @@
     .internal-notes .status.warning { background: #ffe7c2; color: #8a4b00; }
     .internal-notes .summary { background: #fff5dc; border-color: #f0c04a; color: #6a3a00; }
     .internal-notes .summary code { background: #ffe7c2; color: #6a3a00; }
-
-    /* Internal-only content — put class="internal-only" on any <li> item or on a
-       whole <section class="card release internal-only">. Hidden by default (the
-       client-facing view); shown only when "Internal view" is on; NEVER printed
-       (see @media print) so the PDF handed to a client is always clean.
-       Visibility itself is driven by the filter JS (apply()); the rules below are
-       only the amber highlight + badge shown while the internal view is active. */
-    body.show-internal ul.changes > li.internal-only {
-      border-left: 3px solid #d99a1f;
-      padding-left: 12px;
-      background: #fffaef;
-    }
-    body.show-internal ul.changes > li.internal-only .change-title::after {
-      content: "INTERNAL";
-      margin-left: 8px;
-      font: 700 10px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
-      letter-spacing: 0.04em;
-      color: #8a4b00; background: #ffe7c2;
-      padding: 1px 6px; border-radius: 4px; vertical-align: middle;
-    }
-    .btn-print.internal-active { border-color: #d99a1f; background: rgba(217,154,31,0.22); }
     .btn-hide-internal {
       background: transparent;
       border: 1px solid #d99a1f;
@@ -305,11 +271,6 @@
       details.tech > summary { color: #000; }
       details.tech { break-inside: avoid; }
       details.tech[open] .tech-body { background: #fff; }
-      /* Client-ready PDF: drop the interactive controls and never leak internal notes
-         (the !important beats the inline display the filter JS may have set while the
-         internal view was on, so internal content can never reach a printed PDF). */
-      .version-picker, .no-print, .no-results, #toggle-internal, .btn-hide-internal { display: none !important; }
-      .internal-notes, .internal-only { display: none !important; }
     }
   </style>
 </head>
@@ -347,30 +308,12 @@
           <option value="none">— Compare to —</option>
         </select>
       </div>
-      <div class="picker-row picker-actions">
-        <button type="button" id="internal-btn" class="btn-print" hidden title="Show Setics-internal items (never included in the printed PDF)">🔒 Internal view: off</button>
-        <button type="button" id="print-btn" class="btn-print" title="Print or save the current selection as a client-ready PDF">🖨 Print / Save as PDF</button>
-      </div>
     </div>
   </div>
 </header>
 
 <main>
-  <p class="no-print" style="max-width:960px;margin:0 auto 8px;padding:0 24px;"><a href="./">← Back to documentation</a></p>
-
-  <!-- ============================================================
-       INTERNAL / CLIENT EDITING NOTES (for the Setics product team)
-       ------------------------------------------------------------
-       * Add / remove / edit a feature: edit the <li> items inside the
-         relevant "<section class="card release" ...>" block below.
-       * Setics-only item (kept out of the client PDF): add class
-         "internal-only" to its <li>, e.g. <li class="internal-only"> … </li>.
-         A whole internal card: <section class="card release internal-only" …>.
-       * "🔒 Internal view" (top-right) reveals internal items on screen;
-         the "🖨 Print / Save as PDF" output NEVER includes them, so the
-         printed/PDF version is always client-ready.
-       ============================================================ -->
-
+  <p style="max-width:960px;margin:0 auto 8px;padding:0 24px;"><a href="./">← Back to documentation</a></p>
 
 
  <!-- ============================================================ -->
@@ -677,7 +620,7 @@
  <div class="release-head">
  <h2>Version 2.4.6</h2>
  <span class="status">Maintenance &amp; features</span>
- <span class="meta">2026 · maintenance branch</span>
+ <span class="meta">Released September 2026 · build 2.4.6.5848</span>
  </div>
 
  <div class="summary">
@@ -749,6 +692,28 @@
  <div class="change-title">Node Placement By Level <span class="build-tag">2.4.6.5830</span></div>
  <div class="change-desc">Architecture branches are now merged into a common parent <em>Support</em>
  and placed level-by-level, producing more predictable node layouts on multi-tier networks.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag feature">New</span>
+ <div class="change-body">
+ <div class="change-title">Delete design instructions from the Visualizer <span class="build-tag">2.4.6.5843</span></div>
+ <div class="change-desc">The Design Instructions Visualizer now has a Delete button that removes the selected design instruction directly from the list.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag feature">New</span>
+ <div class="change-body">
+ <div class="change-title">Naming variable for the external ID <span class="build-tag">2.4.6.5843</span></div>
+ <div class="change-desc">Naming rules can now use the element's external ID as a variable.</div>
  </div>
  </div>
  
@@ -828,6 +793,61 @@
  <div class="change-title">Duct model instructions <span class="build-tag">2.4.6.5840</span></div>
  <div class="change-desc">The duct-model instruction can now be modified, giving more control over
  the assembly of duct designs.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag improve">Improved</span>
+ <div class="change-body">
+ <div class="change-title">Shorter Batch Engine console output <span class="build-tag">2.4.6.5843</span></div>
+ <div class="change-desc">In command-line mode, setting parameters with <code>--setparam</code> no longer prints run logs, and the run summary is only shown for compute runs, which keeps the console output short and readable.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag improve">Improved</span>
+ <div class="change-body">
+ <div class="change-title">Lower memory use across successive runs <span class="build-tag">2.4.6.5845</span></div>
+ <div class="change-desc">Memory growth when a design is run several times in the same session is reduced.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag improve">Improved</span>
+ <div class="change-body">
+ <div class="change-title">Faster infrastructure creation and project opening <span class="build-tag">2.4.6.5846</span></div>
+ <div class="change-desc">Creating infrastructure on the map is immediate again, projects with many infrastructure elements open faster, and deleting infrastructure no longer causes a crash.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag improve">Improved</span>
+ <div class="change-body">
+ <div class="change-title">Excel reports generated last during project export <span class="build-tag">2.4.6.5846</span></div>
+ <div class="change-desc">Project export now produces the Excel reports last, so the other exported files are available sooner.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag improve">Improved</span>
+ <div class="change-body">
+ <div class="change-title">Installer and application signed with the Setics certificate <span class="build-tag">2.4.6.5848</span></div>
+ <div class="change-desc">The installer and the application files are signed with the official Setics code-signing certificate, so Windows no longer warns about an unrecognized publisher.</div>
  </div>
  </div>
  
@@ -930,6 +950,127 @@
  <div class="change-desc">Binding redirects for the GDAL native libraries are now pinned to the
  shipped 3.3.2 build, eliminating a startup <code>TypeInitializationException</code> seen
  on some installations.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag fix">Fixed</span>
+ <div class="change-body">
+ <div class="change-title">Fiber connectivity after a cable merge <span class="build-tag">2.4.6.5843</span></div>
+ <div class="change-desc">Fiber connectivity no longer fails after a cable merge when a downstream merged cable passes back through the root node, and the splice closure is no longer removed by mistake.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag fix">Fixed</span>
+ <div class="change-body">
+ <div class="change-title">Errors when re-running routing, node placement or cabling <span class="build-tag">2.4.6.5845</span></div>
+ <div class="change-desc">Several errors that could stop an additional run of routing, node placement or cabling on an existing design are fixed.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag fix">Fixed</span>
+ <div class="change-body">
+ <div class="change-title">Legend and selection after toggling automatic interconnections <span class="build-tag">2.4.6.5846</span></div>
+ <div class="change-desc">Toggling automatic interconnections no longer freezes the map legend, leaves a new map empty or causes a crash when selecting elements.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag fix">Fixed</span>
+ <div class="change-body">
+ <div class="change-title">Crash when loading a layer in EPSG:9707 <span class="build-tag">2.4.6.5848</span></div>
+ <div class="change-desc">Layers using the EPSG:9707 coordinate system load correctly.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag fix">Fixed</span>
+ <div class="change-body">
+ <div class="change-title">Error on the second run of some projects <span class="build-tag">2.4.6.5848</span></div>
+ <div class="change-desc">A second design run no longer fails on some projects.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag fix">Fixed</span>
+ <div class="change-body">
+ <div class="change-title">Routing crash on a second run with imported pathways <span class="build-tag">2.4.6.5848</span></div>
+ <div class="change-desc">Routing no longer crashes on a second run that imports <code>net_pathways</code> when an endpoint is connected to the infrastructure by less than 1 m.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag fix">Fixed</span>
+ <div class="change-body">
+ <div class="change-title">Node placement with a missing upstream access structure <span class="build-tag">2.4.6.5848</span></div>
+ <div class="change-desc">Node placement no longer crashes when the access structure of the upstream pathway is missing, and the missing label of a node placement option is restored.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag fix">Fixed</span>
+ <div class="change-body">
+ <div class="change-title">Point infrastructure eligibility uses the infrastructure class again <span class="build-tag">2.4.6.5848</span></div>
+ <div class="change-desc">Eligibility of point infrastructure takes the infrastructure class into account again; previously only models set to "Any" were eligible.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag fix">Fixed</span>
+ <div class="change-body">
+ <div class="change-title">Cable names refreshed after an equipment model change <span class="build-tag">2.4.6.5848</span></div>
+ <div class="change-desc">Cable names are refreshed when a design instruction changes the equipment model.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag fix">Fixed</span>
+ <div class="change-body">
+ <div class="change-title">Optimization interrupted after renaming equipment in the database <span class="build-tag">2.4.6.5848</span></div>
+ <div class="change-desc">Renaming equipment in the database no longer interrupts the optimization; node equipment names follow the rename.</div>
+ </div>
+ </div>
+ 
+ </li>
+
+ <li>
+ <div class="change-row">
+ <span class="tag fix">Fixed</span>
+ <div class="change-body">
+ <div class="change-title">Vetro export: equipment exported with its geometry <span class="build-tag">2.4.6.5848</span></div>
+ <div class="change-desc">Closures and splitters are now exported to Vetro with their geometry.</div>
  </div>
  </div>
  
@@ -2558,7 +2699,6 @@
     var compareSel = document.getElementById('compare-selector');
     var releases   = document.querySelectorAll('section.release');
     var main       = document.querySelector('main');
-    var internalMode = false;   // when true, ".internal-only" items are revealed (never printed)
 
     // Extract numeric build number ("2.4.5.5820" → 5820). Returns NaN if no match.
     function buildNum(b) {
@@ -2591,7 +2731,12 @@
       '2.4.4': ['2.4.4.5781','2.4.4.5791','2.4.4.5799','2.4.4.5804','2.4.4.5806',
                 '2.4.4.5809','2.4.4.5810','2.4.4.5811','2.4.4.5812'],
       '2.4.5': ['2.4.5.5815','2.4.5.5817','2.4.5.5818','2.4.5.5819','2.4.5.5820',
-                '2.4.5.5821','2.4.5.5822','2.4.5.5826','2.4.5.5827']
+                '2.4.5.5821','2.4.5.5822','2.4.5.5826','2.4.5.5827'],
+      '2.4.6': ['2.4.6.5828','2.4.6.5829','2.4.6.5830','2.4.6.5831','2.4.6.5832',
+                '2.4.6.5833','2.4.6.5834','2.4.6.5835','2.4.6.5836','2.4.6.5837',
+                '2.4.6.5838','2.4.6.5839','2.4.6.5840','2.4.6.5841','2.4.6.5842',
+                '2.4.6.5843','2.4.6.5844','2.4.6.5845','2.4.6.5846','2.4.6.5847',
+                '2.4.6.5848']
     };
 
     // Builds that shipped only internal/technical changes (release-stamp builds,
@@ -2599,7 +2744,19 @@
     var TECH_ONLY_BUILDS = {
       '2.4.5.5818': true,
       '2.4.5.5822': true,
-      '2.4.5.5827': true
+      '2.4.5.5827': true,
+      '2.4.6.5829': true,
+      '2.4.6.5831': true,
+      '2.4.6.5832': true,
+      '2.4.6.5833': true,
+      '2.4.6.5834': true,
+      '2.4.6.5835': true,
+      '2.4.6.5836': true,
+      '2.4.6.5837': true,
+      '2.4.6.5838': true,
+      '2.4.6.5839': true,
+      '2.4.6.5844': true,
+      '2.4.6.5847': true
     };
 
     // Version ordering (oldest → newest). Index = rank. Drives cross-version
@@ -2682,7 +2839,7 @@
       } else if (BUILDS_BY_VERSION[version]) {
         versionBuilds = BUILDS_BY_VERSION[version].slice();
       }
-      versionBuilds.sort(function (a, b) { return buildNum(b) - buildNum(a); });   // newest build first, mirroring the version selector
+      versionBuilds.sort(function (a, b) { return buildNum(a) - buildNum(b); });
 
       buildSel.innerHTML = '';
       var allOpt = document.createElement('option');
@@ -2713,7 +2870,7 @@
         group.label = 'Version ' + v;
 
         var builds = (BUILDS_BY_VERSION[v] || []).slice().sort(function (a, b) {
-          return buildNum(b) - buildNum(a);   // newest build first, mirroring the version selector
+          return buildNum(a) - buildNum(b);
         });
         if (builds.length === 0) {
           var o = document.createElement('option');
@@ -2770,11 +2927,6 @@
       }
 
       releases.forEach(function (sec) {
-        // Whole-section internal card: hide entirely outside the internal view.
-        if (sec.classList.contains('internal-only') && !internalMode) {
-          sec.style.display = 'none';
-          return;
-        }
         if (crossMode) {
           var matched = 0;
           sec.querySelectorAll('ul.changes > li').forEach(function (li) {
@@ -2783,9 +2935,8 @@
               return (!lower || rankCmp(r, lower) > 0) &&
                      (!upper || rankCmp(r, upper) <= 0);
             });
-            var vis = hit && (internalMode || !li.classList.contains('internal-only'));
-            li.style.display = vis ? '' : 'none';
-            if (vis) matched++;
+            li.style.display = hit ? '' : 'none';
+            if (hit) matched++;
           });
           hideEmptyHeadings(sec);
           sec.querySelectorAll('.summary').forEach(function (s) { s.style.display = 'none'; });
@@ -2800,12 +2951,9 @@
 
         if (build === 'all') {
           sec.style.display = '';
-          sec.querySelectorAll('ul.changes > li').forEach(function (li) {
-            li.style.display = (internalMode || !li.classList.contains('internal-only')) ? '' : 'none';
-          });
+          sec.querySelectorAll('ul.changes > li').forEach(function (li) { li.style.display = ''; });
           sec.querySelectorAll('h3').forEach(function (h) { h.style.display = ''; });
           sec.querySelectorAll('.summary').forEach(function (s) { s.style.display = ''; });
-          hideEmptyHeadings(sec);
           anyVisible = true;
           return;
         }
@@ -2815,9 +2963,8 @@
         sec.querySelectorAll('ul.changes > li').forEach(function (li) {
           var ibs = itemBuilds(li);
           var hit = ibs.some(function (b) { return buildNum(b) === buildN; });
-          var vis = hit && (internalMode || !li.classList.contains('internal-only'));
-          li.style.display = vis ? '' : 'none';
-          if (vis) matched++;
+          li.style.display = hit ? '' : 'none';
+          if (hit) matched++;
         });
         hideEmptyHeadings(sec);
         sec.querySelectorAll('.summary').forEach(function (s) { s.style.display = 'none'; });
@@ -2882,36 +3029,32 @@
     buildSel.addEventListener('change', apply);
     compareSel.addEventListener('change', apply);
 
-    // Print / Save as PDF — prints the current selection (the print stylesheet
-    // strips the controls and any internal notes, so the output is client-ready).
-    var printBtn = document.getElementById('print-btn');
-    if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
+    // ----- Internal-notes toggle (Setics-only section, hidden by default) -----
+    var internalSec    = document.getElementById('internal-notes');
+    var toggleLink     = document.getElementById('toggle-internal');
+    var hideInternalBtn = document.querySelector('.btn-hide-internal');
 
-    // ----- Internal view toggle (Setics-only items, hidden by default) -----
-    // Mark any single change with class="internal-only" on its <li>, or a whole
-    // internal card with <section class="card release internal-only" ...>. Such
-    // content is hidden in the default (client-facing) view and revealed here;
-    // apply() drives the actual visibility so the version/build filters keep
-    // working, and @media print always excludes it (the client PDF stays clean).
-    var internalBtn = document.getElementById('internal-btn');
-    var hasInternal = !!document.querySelector('.internal-only');
-
-    function setInternalMode(on) {
-      internalMode = on;
-      document.body.classList.toggle('show-internal', on);
-      if (internalBtn) {
-        internalBtn.textContent = on ? '🔒 Internal view: on' : '🔒 Internal view: off';
-        internalBtn.classList.toggle('internal-active', on);
-      }
-      apply();
+    function setInternalVisible(visible) {
+      if (!internalSec) return;
+      internalSec.classList.toggle('visible', visible);
+      if (toggleLink) toggleLink.textContent = visible ? 'Hide internal notes' : 'Show internal notes';
     }
 
-    // Only surface the toggle when there is internal content to reveal.
-    if (internalBtn && hasInternal) {
-      internalBtn.hidden = false;
-      internalBtn.addEventListener('click', function () { setInternalMode(!internalMode); });
-      // Auto-enable when the URL fragment mentions "internal".
-      if ((location.hash || '').indexOf('internal') !== -1) setInternalMode(true);
+    // Auto-show if the URL fragment mentions "internal"
+    if ((location.hash || '').indexOf('internal') !== -1) setInternalVisible(true);
+
+    if (toggleLink) {
+      toggleLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        var nowVisible = !internalSec.classList.contains('visible');
+        setInternalVisible(nowVisible);
+        if (nowVisible) {
+          internalSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
+    if (hideInternalBtn) {
+      hideInternalBtn.addEventListener('click', function () { setInternalVisible(false); });
     }
   })();
 </script>
