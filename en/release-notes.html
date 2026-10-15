@@ -263,6 +263,10 @@
     }
 
     .compare-banner { margin: 6px 0 0; font-size: 1.05rem; font-weight: 600; }
+    .pdf-btn { margin-top: 10px; padding: 6px 14px; font: inherit; font-size: .9rem; font-weight: 600;
+      color: inherit; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.6);
+      border-radius: 6px; cursor: pointer; }
+    .pdf-btn:hover, .pdf-btn:focus-visible { background: rgba(255,255,255,.3); }
 
     /* Zero top/bottom page margin leaves Chrome no room for its own
        header/footer (page URL, title, date), so the PDF holds only the notes. */
@@ -270,7 +274,7 @@
 
     @media print {
       body { background: #fff; padding: 10mm 0; }
-      .version-picker, .hero-logo, .back-link, footer, .no-results { display: none !important; }
+      .version-picker, .hero-logo, .back-link, .pdf-btn, footer, .no-results { display: none !important; }
       .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
       header.hero { background: #fff; color: #000; }
       .brand { color: #555; }
@@ -290,6 +294,8 @@
     <div class="hero-text">
       <h1>Release Notes</h1>
       <p id="compare-banner" class="compare-banner" hidden></p>
+      <!-- Opens the print dialog; choose "Save as PDF" as destination. -->
+      <button type="button" class="pdf-btn" onclick="window.print()">Download PDF</button>
     </div>
     <div class="version-picker">
       <label for="version-selector">Version, build &amp; compare</label>
