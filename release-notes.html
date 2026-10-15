@@ -268,20 +268,50 @@
       border-radius: 6px; cursor: pointer; }
     .pdf-btn:hover, .pdf-btn:focus-visible { background: rgba(255,255,255,.3); }
 
-    /* Zero top/bottom page margin leaves Chrome no room for its own
-       header/footer (page URL, title, date), so the PDF holds only the notes. */
-    @page { margin: 0 12mm; }
+    /* Print / PDF. Defining page-margin boxes replaces Chrome's own
+       header/footer (page URL, title, date), so the PDF holds only the notes.
+       Four sizes only: 18pt title, 13pt version, 9.5pt text, 7.5pt labels
+       (inline code 8.5pt to match the text's x-height). */
+    @page {
+      size: A4; margin: 12mm 14mm 13mm;
+      @top-left { content: ""; }
+      @bottom-left { content: "Sttar release notes"; font: 7.5pt sans-serif; color: #5b6b85; }
+      @bottom-right { content: counter(page) " / " counter(pages); font: 7.5pt sans-serif; color: #5b6b85; }
+    }
 
     @media print {
-      body { background: #fff; padding: 10mm 0; }
+      html, body { background: #fff; font-size: 9.5pt; line-height: 1.4;
+                   -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .version-picker, .hero-logo, .back-link, .pdf-btn, footer, .no-results { display: none !important; }
-      .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
-      header.hero { background: #fff; color: #000; }
-      .brand { color: #555; }
-      h1 { color: #000; }
-      details.tech > summary { color: #000; }
-      details.tech { break-inside: avoid; }
-      details.tech[open] .tech-body { background: #fff; }
+      /* Compact title block, not a cover page. */
+      header.hero { background: #fff; color: var(--ink); padding: 0 0 6pt; margin-bottom: 10pt; }
+      header.hero::after { height: 2pt; }
+      .hero-inner { max-width: none; display: block; }
+      h1 { font-size: 18pt; color: var(--bg); }
+      .compare-banner { font-size: 9.5pt; color: var(--accent); margin-top: 2pt; }
+      main { max-width: none; margin: 0; padding: 0; }
+      /* Sections flow across pages; only single entries stay unbroken, which
+         avoids the blank gaps and near-empty trailing page of whole-card breaks. */
+      .card { box-shadow: none; border: 0; border-radius: 0; padding: 0; margin: 0 0 14pt; }
+      .card:last-of-type { margin-bottom: 0; }
+      .release-head { gap: 8pt; padding-bottom: 3pt; margin-bottom: 6pt;
+                      border-bottom: 1pt solid var(--bg); break-after: avoid; }
+      .release-head h2 { font-size: 13pt; color: var(--bg); }
+      .release-head .status, .release-head .meta { font-size: 7.5pt; padding: 1pt 6pt; }
+      .summary { font-size: 9.5pt; padding: 4pt 8pt; margin-bottom: 6pt; border: 0;
+                 border-left: 2pt solid var(--accent); border-radius: 0; }
+      h3 { font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+           color: var(--accent); margin: 8pt 0 2pt; padding-bottom: 2pt;
+           border-bottom: .5pt solid var(--line); break-after: avoid; }
+      ul.changes > li { padding: 3pt 0; border-bottom: .5pt dotted var(--line); break-inside: avoid; }
+      .change-row { gap: 8pt; }
+      .change-desc { font-size: 9.5pt; margin-top: 0; }
+      code { font-size: 8.5pt; padding: 0 3pt; }
+      .tag { font-size: 7.5pt; min-width: 52pt; padding: 1pt 5pt; }
+      .build-tag { font-size: 7.5pt; padding: 0 4pt; }
+      .change-visual { margin: 4pt 0 2pt; break-inside: avoid; }
+      .change-visual img, .change-visual video { max-height: 70mm; width: auto; box-shadow: none; }
+      .change-visual figcaption { font-size: 7.5pt; }
     }
   </style>
 </head>
