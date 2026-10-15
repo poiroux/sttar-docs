@@ -118,36 +118,37 @@ function scaffold(build, commits) {
   const maxDoc = await documentedMaxBuild();
   console.log(`[scan-builds] version ${version}, branch ${branch}, documented up to build ${maxDoc === -1 ? '(none)' : maxDoc}`);
 
-  let raw;
-  try {
-    raw = execFileSync('git', ['-P', 'log', '--format=%h\t%s', '--max-count=500', branch],
-      {cwd: repo, encoding: 'utf8'});
-  } catch (e) {
-    console.error(`[scan-builds] git log failed on ${branch} in ${repo}: ${e.message}`);
-    process.exit(1);
-  }
-
-  const rows = raw.split('\n').filter(Boolean).map((l) => {
-    const t = l.indexOf('\t');
-    return {hash: l.slice(0, t), subject: l.slice(t + 1)};
-  });
-
-  // Walk newest→oldest. Accumulate non-marker commits; when a matching build
-  // marker appears, those accumulated commits belong to it.
-  const buildRe = new RegExp(`^Build (${version.replace(/\./g, '\\.')}\\.(\\d+))$`);
-  const builds = []; // {build, num, commits}
-  let pending = [];
-  for (const r of rows) {
-    const m = r.subject.match(buildRe);
-    if (m) {
-      builds.push({build: m[1], num: Number(m[2]), commits: pending});
-      pending = [];
-    } else if (/^Build \d+\.\d+/.test(r.subject)) {
-      // a build marker for a different version line — flush without attributing
-      pending = [];
-    } else if (!/^Merge (branch|pull request|remote-tracking)/i.test(r.subject)) {
-      pending.push(r);
+  const log = (args) => {
+    try {
+      return execFileSync('git', ['-P', 'log', '--format=%h\t%s', ...args], {cwd: repo, encoding: 'utf8'})
+        .split('\n').filter(Boolean).map((l) => {
+          const t = l.indexOf('\t');
+          return {hash: l.slice(0, t), subject: l.slice(t + 1)};
+        });
+    } catch (e) {
+      console.error(`[scan-builds] git log failed on ${branch} in ${repo}: ${e.message}`);
+      process.exit(1);
     }
+  };
+
+  // Build markers reachable from the branch, ordered by build number (global
+  // across version lines), newest first. A build packages exactly the commits
+  // reachable from its marker and not from the previous marker (prev..cur),
+  // which stays correct across merges (e.g. "merge master into the integration
+  // branch") where date order does not. Not first-parent only: some markers
+  // reach the integration branch through a merge.
+  const buildRe = new RegExp(`^Build (${version.replace(/\./g, '\\.')}\\.(\\d+))$`);
+  const buildNum = (r) => Number(r.subject.match(/\.(\d+)\s*$/)?.[1] ?? -1);
+  const markers = log(['--max-count=2000', branch])
+    .filter((r) => /^Build \d+\.\d+/.test(r.subject))
+    .sort((a, b) => buildNum(b) - buildNum(a));
+  const builds = []; // {build, num, commits}
+  for (let i = 0; i < markers.length - 1; i++) {
+    const m = markers[i].subject.match(buildRe);
+    if (!m || Number(m[2]) <= maxDoc) continue;
+    const commits = log(['--no-merges', `${markers[i + 1].hash}..${markers[i].hash}`])
+      .filter((r) => !/^Build \d+\.\d+/.test(r.subject));
+    builds.push({build: m[1], num: Number(m[2]), commits});
   }
 
   const fresh = builds.filter((b) => b.num > maxDoc && b.commits.length);
@@ -159,4 +160,6 @@ function scaffold(build, commits) {
   fresh.sort((a, b) => b.num - a.num); // newest first
   console.log(`[scan-builds] ${fresh.length} undocumented build(s): ${fresh.map((b) => b.build).join(', ')}\n`);
   for (const b of fresh) console.log(scaffold(b.build, b.commits));
+  // --check: exit 2 so a release script can tell "notes are behind" apart.
+  if (process.argv.includes('--check')) process.exitCode = 2;
 })();

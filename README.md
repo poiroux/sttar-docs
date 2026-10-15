@@ -39,3 +39,13 @@ GIT_USER=<Your GitHub username> yarn deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
+## Release notes
+
+Source of truth: `Sttar Release Notes.html` (outside the repo, path in `scripts/gen-changelog.mjs`, override with `RELEASE_NOTES_HTML`). Its "Internal notes" section is never published.
+
+After a STTAR build:
+
+1. `npm run scan:builds -- --version 2.4.6` lists the builds not yet documented, with one draft entry per commit (`--check` exits 2 when the notes are behind). Builds are cut by the `Build X.Y.Z.NNNN` marker commits: a build contains the commits reachable from its marker and not from the previous one.
+2. Write the customer-facing entries in the source HTML (dated backup first), and add the build to the shipped-build map (`TECH_ONLY_BUILDS` when it has no customer-facing change).
+3. `npm run publish:notes` regenerates the pages, builds, commits the generated files, pushes and deploys. It does nothing when the generated pages are unchanged.
