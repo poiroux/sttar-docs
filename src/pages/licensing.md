@@ -48,7 +48,7 @@ Routine license-key administration — applying a remote update (**RAU**),
 refreshing keys, and managing or deleting containers — is performed through the
 CodeMeter Control Center / WebAdmin.
 
-:::note Detailed procedures
+:::note[Detailed procedures]
 Step-by-step license-key administration (RAU files, container maintenance,
 license-server admin) is maintained in the Setics support knowledge base and
 will be folded into this section during content migration. *(Placeholder —

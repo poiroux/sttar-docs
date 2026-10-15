@@ -127,7 +127,7 @@ Topology**, then fill in the **Placement** tab.
 | **Size parameters** | Minimum, maximum and "Target" number of terminations per node. If the maximum is unset, the minimum is taken as Target. The maximum is always respected; the minimum can be violated if it conflicts with the distance parameter. |
 | **Max distance by infrastructure** | Maximum distance (m) between the node and the endpoints it serves. |
 
-:::caution Import **or** auto-place — not both
+:::caution[Import **or** auto-place — not both]
 Either import nodes (and leave the Placement tab empty) **or** have the software
 place them automatically (by filling the Placement tab). If you import nodes
 **and** complete Placement, Setics Sttar uses only the imported data and does

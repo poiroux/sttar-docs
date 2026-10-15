@@ -45,7 +45,7 @@ Modeler), see the data-preparation guidance — related to the manual's
 [Filters & preprocessing](/advanced-designer/appendix/filters-preprocessing)
 appendix.
 
-:::info Help us improve
+:::info[Help us improve]
 This FAQ is seeded from the support portal's most frequent topics. Items marked
 *placeholder* are pending content migration; the structure is in place so each
 answer can be filled in without changing links.

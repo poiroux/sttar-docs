@@ -26,4 +26,4 @@ The Setics Sttar Advanced Designer main window is divided into two areas:
 - **Bottom area** — the different settings and map-view tabs. By default the
   **Project**, **Infrastructure** and **Architecture** tabs are available.
 
-> 🖼️ *Screenshot to migrate: the main application window.*
+![The main application window](/img/manuals/fig14.jpg)

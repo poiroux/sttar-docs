@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 title: Migration
 ---
 
@@ -56,7 +56,7 @@ id of the access-network section going upstream from that point.
   the identifier of the Pathway Access Structure at that location, typically
   like `J000001`.
 
-:::info Resolving identifiers
+:::info[Resolving identifiers]
 - To get the **node** identifier, use `NODEAID` / `NODEBID` — left blank when the
   cable does not connect to a node on that end.
 - To get the **endpoint** identifier, use `ENDPTBID` — left blank when the cable

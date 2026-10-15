@@ -7,23 +7,23 @@ title: Work Tools
 
 The work toolbar has the following buttons, from left to right:
 
-> 🖼️ *Icons to migrate.*
+![The work toolbar](/img/manuals/modifications.png)
 
-| Command | Description |
-|---|---|
-| **Select tool** | Select one or more map elements to examine or modify their properties, and/or delete them. |
-| **Irregular selection tool** | Select one or more elements by drawing an irregular polygon. |
-| **Deselect all** | Deselect all selected elements. |
-| **Creation tool** | Draw and create elements on the map. |
-| **Modification tool** | Modify the geometry of the elements on the map. |
-| **Connection validation tool** | Choose the pathway to which the endpoint or node will be linked. |
-| **Pathway splitting tool** | Split a pathway in two, creating a point infrastructure at the splitting place. |
-| **Pathway merge tool** | Merge several pathways into one. |
-| **Node fusion tool** | Merge two nodes, leaving only one with the service area of both. |
-| **Parent node affiliation tool** | Choose a node to become the parent of one or more elements. |
-| **Deletion tool** | Delete the selected features. |
-| **Google Street View tool** | Explore a selected location of the map. |
-| **Distance measuring tool** | Measure a distance between two elements. |
+| Icon | Command | Description |
+|---|---|---|
+| ![](/img/manuals/icon9.png) | **Select tool** | Select one or more map elements to examine or modify their properties, and/or delete them. |
+| ![](/img/manuals/icoselectpoly.png) | **Irregular selection tool** | Select one or more elements by drawing an irregular polygon. |
+| ![](/img/manuals/icodeselect.png) | **Deselect all** | Deselect all selected elements. |
+| ![](/img/manuals/icon12.png) | **Creation tool** | Draw and create elements on the map. |
+| ![](/img/manuals/icon13.png) | **Modification tool** | Modify the geometry of the elements on the map. |
+| ![](/img/manuals/icointerco.png) | **Connection validation tool** | Choose the pathway to which the endpoint or node will be linked. |
+| ![](/img/manuals/icoslice.png) | **Pathway splitting tool** | Split a pathway in two, creating a point infrastructure at the splitting place. |
+| ![](/img/manuals/icofuse.png) | **Pathway merge tool** | Merge several pathways into one. |
+| ![](/img/manuals/icofusion.png) | **Node fusion tool** | Merge two nodes, leaving only one with the service area of both. |
+| ![](/img/manuals/icoparent.png) | **Parent node affiliation tool** | Choose a node to become the parent of one or more elements. |
+| ![](/img/manuals/icosuppr.png) | **Deletion tool** | Delete the selected features. |
+| ![](/img/manuals/icon14.png) | **Google Street View tool** | Explore a selected location of the map. |
+| ![](/img/manuals/icon15.png) | **Distance measuring tool** | Measure a distance between two elements. |
 
 Tools are of two types: **action** tools do something the moment you click the button, while **mode** tools
 let you act on the map before validating the action. For a mode tool, validate the action by:
@@ -65,11 +65,15 @@ With the **rectangular** selection:
 
 With the **irregular** selection tool, all elements that intersect the polygon are selected.
 
-> 🖼️ *Screenshots to migrate: contained-vs-intersecting selection.*
+![Rectangular selection drawn top to bottom — selects elements entirely inside](/img/manuals/fig30.png)
+
+![Rectangular selection drawn bottom to top — selects intersecting elements](/img/manuals/fig31.png)
+
+![Irregular polygon selection — selects all intersecting elements](/img/manuals/selectpolyall_v1.png)
 
 ## Selection Tools – Context Menu
 
-> 🖼️ *Screenshot to migrate: the selection context menu.*
+![The selection context menu](/img/manuals/selectmenuceng.png)
 
 The context menu lets you select all elements of the active layer in the layer control panel, and open the
 attribute table. When one or more items are selected, they can be deleted via the **Delete** action in the

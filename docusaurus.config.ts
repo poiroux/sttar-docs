@@ -154,6 +154,15 @@ const config: Config = {
           ],
         },
         {
+          // Full product-wide release notes (all versions, with the built-in
+          // version/build/compare picker). Served as a static page generated
+          // from the product Release Notes document — see scripts/gen-changelog.mjs.
+          // `pathname://` opts out of SPA routing so the static file loads directly.
+          href: 'pathname:///release-notes.html',
+          label: 'Release notes',
+          position: 'right',
+        },
+        {
           type: 'docsVersionDropdown',
           docsPluginId: 'advanced-designer',
           position: 'right',
@@ -185,6 +194,7 @@ const config: Config = {
             {label: 'Licensing', to: '/licensing'},
             {label: 'System requirements', to: '/system-requirements'},
             {label: 'Troubleshooting & FAQ', to: '/troubleshooting'},
+            {label: 'Release notes', href: 'pathname:///release-notes.html'},
           ],
         },
       ],

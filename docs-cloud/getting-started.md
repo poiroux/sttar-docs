@@ -7,7 +7,7 @@ title: Getting started
 
 Signing in, workspaces, and uploading your first project to the hosted service.
 
-:::warning Draft — pending product decision
+:::warning[Draft — pending product decision]
 Cloud-specific steps are not documented yet: the product surface and the
 entitlement mapping are still being settled. This page defines the intended
 scope so it can be filled in once the product decision lands.

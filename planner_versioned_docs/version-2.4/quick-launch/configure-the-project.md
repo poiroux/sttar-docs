@@ -13,7 +13,7 @@ Configuring a project happens across three tabs, in order:
 
 ## Set up the Project
 
-> 🖼️ *Screenshot to migrate: the Project tab.*
+![The Project tab](/img/manuals/captureproj.png)
 
 The **Project** tab allows you to configure the current project. For each project, it is recommended that you
 define:
@@ -33,7 +33,7 @@ See details of the Project tab in the *Project Tab* section, and details about t
 The **Infrastructure** tab allows you to add GIS data from reusable infrastructures to the project and to
 configure these data. See details in the *Infrastructure Tab* section.
 
-> 🖼️ *Screenshot to migrate: the Infrastructure tab.*
+![The Infrastructure tab](/img/manuals/user-interface-infrastructure-tab-stad23.jpg)
 
 The **Add Pathway Support** button adds an infrastructure in the window. To import the data, click on
 **Import Datasource…**
@@ -48,7 +48,7 @@ When importing an infrastructure, you define:
 
 The data source import settings are explained in the *Import Infrastructure Data* section.
 
-> 🖼️ *Screenshot to migrate: infrastructure import settings.*
+![Infrastructure import settings](/img/manuals/captureinfraimport.png)
 
 In the imported infrastructure's properties, it is necessary to fill in the **cost** and **topology**
 properties of the infrastructure. The costs are important because they play a role in:
@@ -67,7 +67,7 @@ The **Architecture** tab allows you to configure the use of the input GIS layers
 reused or created, as well as to define the interconnections between the nodes or endpoints and the
 infrastructures, the equipment to be used, and the costs linked to this equipment.
 
-> 🖼️ *Screenshot to migrate: the Architecture tab.*
+![The Architecture tab](/img/manuals/capturearchitecture_v1.png)
 
 The buttons **Add Node Support** and **Add Endpoint Support** allow you to create the supports for importing
 node- and endpoint-related data.
@@ -82,7 +82,7 @@ you define:
   length is calculated by the software),
 - Fiber dimensioning (dimensioning of used fibers and spare fibers).
 
-> 🖼️ *Screenshot to migrate: node import settings.*
+![Node import settings](/img/manuals/capturearchitectureimportnode.png)
 
 In the properties of the imported nodes, it is necessary to fill in the properties of costs, equipment, and
 topology. See details in the *Import Passive Architecture Data* section.
@@ -100,7 +100,7 @@ endpoints, you define:
 - Optionally, a field in the table representing the length of each infrastructure segment,
 - Fiber dimensioning (dimensioning of used fibers and spare fibers).
 
-> 🖼️ *Screenshot to migrate: endpoint import settings.*
+![Endpoint import settings](/img/manuals/capturearchitectureimportendpoint.png)
 
 In the properties of the imported endpoints, it is necessary to fill in the cost and topology properties.
 See details in the *Endpoint Properties* section.

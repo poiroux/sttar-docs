@@ -10,7 +10,7 @@ Sttar desktop application. It shares the same network model, map, engineering
 rules and design engine as **Advanced Designer**, but limits the editing and
 optimization capabilities to a planning-and-review workflow.
 
-:::info Shared manual
+:::info[Shared manual]
 Planner and Advanced Designer use **the same application**, so this manual
 follows the same structure and shares its chapters with the Advanced Designer
 manual. Where a capability is restricted under an `STPL` license, the

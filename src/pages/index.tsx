@@ -2,10 +2,11 @@ import React, {type ReactNode} from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 
-const MANUALS = [
+const MANUALS: {to: string; title: string; code: string; draft?: boolean}[] = [
   {to: '/advanced-designer/intro', title: 'Advanced Designer', code: 'STAD'},
   {to: '/planner/intro', title: 'Planner', code: 'STPL'},
   {to: '/batch-engine/intro', title: 'Batch Engine', code: 'STBE'},
+  {to: '/cloud/intro', title: 'Cloud', code: 'CLOUD', draft: true},
 ];
 
 export default function Home(): ReactNode {
@@ -27,10 +28,19 @@ export default function Home(): ReactNode {
                 padding: '1.25rem',
                 minWidth: 220,
               }}>
-              <h3 style={{marginTop: 0}}>{m.title}</h3>
+              <h3 style={{marginTop: 0}}>
+                {m.title}
+                {m.draft && (
+                  <span style={{marginLeft: 8, fontSize: '0.7rem', opacity: 0.6, fontWeight: 'normal'}}>
+                    DRAFT
+                  </span>
+                )}
+              </h3>
               <p style={{opacity: 0.7}}>License <code>{m.code}</code></p>
-              <Link className="button button--primary" to={m.to}>
-                Open manual
+              <Link
+                className={`button ${m.draft ? 'button--secondary' : 'button--primary'}`}
+                to={m.to}>
+                {m.draft ? 'Preview manual' : 'Open manual'}
               </Link>
             </div>
           ))}

@@ -22,7 +22,9 @@ application.
    of the menu at the top of the page.
 4. Tick **Enable** in the **Network Server** panel, then click **Apply**.
 
-> 🖼️ *Screenshots to migrate: CodeMeter Control Center icon, Server tab.*
+![CodeMeter Control Center icon in the Windows taskbar](/img/manuals/fig1.png)
+
+![CodeMeter WebAdmin — Configuration ▸ Server tab](/img/manuals/2-3-1-codemeter-version_v2.jpg)
 
 The steps above apply to a server running Microsoft Windows.
 

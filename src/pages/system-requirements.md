@@ -30,7 +30,7 @@ Windows workstations connected to it. Clients and server communicate over IP on
 - **WIBU CodeMeter Runtime 7.10a or higher** — included in the package, or
   installed by the setup assistant. See [Licensing](/licensing).
 
-:::note License Manager utility
+:::note[License Manager utility]
 The optional **License Manager** tool (**Help ▸ License Manager**) is a separate
 executable that requires the **Microsoft .NET Desktop Runtime 8.0**. The main
 application does not depend on it.
@@ -41,7 +41,7 @@ application does not depend on it.
 Customer IT-security guidance (network exposure, firewall rules for the license
 server, data handling) is maintained as a dedicated support document.
 
-:::info Placeholder
+:::info[Placeholder]
 The IT Security information sheet is part of the ancillary content to migrate
 from the support portal; it will be linked or inlined here. *(Source content not
 yet ported.)*

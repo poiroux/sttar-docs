@@ -33,7 +33,7 @@ information. A variable is written as:
 For example, the format `L99{uin|format=####} ({name})` returns an identifier
 like `L990156 (MAIN STREET)` for an infrastructure section.
 
-:::info Escaping braces
+:::info[Escaping braces]
 The symbols `{` and `}` and the text between them are interpreted as a variable
 definition; an unsupported variable name is ignored. To include a literal `{` or
 `}` in an identifier, double it: `{{` and `}}`. Setics Sttar always guarantees

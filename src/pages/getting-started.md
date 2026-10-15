@@ -33,7 +33,7 @@ license type.
    Advanced Designer's [Quick launch](/advanced-designer/quick-launch), the
    Planner walkthrough, or the Batch Engine [CLI guide](/batch-engine/intro).
 
-:::tip Where to go next
+:::tip[Where to go next]
 Each manual's sidebar follows the same flow as step 4 in full detail —
 prepare data → configure → optimize → validate → report and export.
 :::
